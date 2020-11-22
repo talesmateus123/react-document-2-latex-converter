@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './List.css'
 
 import { A } from 'hookrouter'
@@ -6,18 +6,20 @@ import { Form, Button, Table, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
+import DocumentStorageService from '../services/document-storage.service'
+
 function List() {
 
-  const [ documents, setDocuments ] = useState([
-    {
-      id: 1,
-      titulo: "Test",
-      subTitulo: "Test"
-    }
-  ])
+  const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
+
+  const [ documents, setDocuments ] = useState([])
   const [ filter, setFilter ] = useState('')
 
-  const getDocuments = () => {
+  useEffect(() => {
+    setDocuments(getDocumentsStorage())
+  })
+
+  const populateDocumentsTable = () => {
     const documentsTable = documents.map(document => {
       return (
         <tr key={document.id}>
@@ -75,7 +77,7 @@ function List() {
           <tbody>
             {
               documents.length !== 0
-              ? getDocuments() 
+              ? populateDocumentsTable() 
               : (
               <tr>
               <td></td>

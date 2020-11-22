@@ -5,4 +5,4 @@ import './index.css'
 
 import Router from './components/router/Router'
 
-ReactDOM.render(<Router />, document.getElementById('root'))
+ReactDOM.render(<div className="container"><Router /></div>, document.getElementById('root'))

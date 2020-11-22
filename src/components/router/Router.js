@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRoutes } from 'hookrouter'
 
-import Home from '../home/Home'
+import ListDocuments from '../document/list/List'
 
 const routes = {
-  '/': () => <Home />,
+  '/': () => <ListDocuments />
 }
 
 function Router() {
