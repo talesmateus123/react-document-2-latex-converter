@@ -3,13 +3,13 @@ import './Info.css'
 
 import { navigate } from 'hookrouter'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 /*
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 */
 
-import DocumentStorageService from '../services/document-storage.service'
+import DocumentStorageService from '../shared/services/document-storage.service'
 
 function Info(props) {
 
@@ -28,12 +28,15 @@ function Info(props) {
     if(!document) {
       setDocument(getDocument())
     }
-  }, [ document, props ])
+  }, [ document, props, getDocumentsStorage ])
 
- 
+  const save = () => {
+    
+  }
+  
   return (
     <div>
-      <h3>Informações do documento</h3>
+      <h3 className="header">Informações do documento</h3>
       <Row>
         <Col sm={10}>
           
@@ -44,8 +47,17 @@ function Info(props) {
       </Row>
 
       <Row style={{paddingTop: 10}}>
-       
-      </Row>
+        <Col className="text-right">
+          <Button variant="info" onClick={() => navigate('/')}>
+            Voltar
+          </Button>
+        </Col>
+        <Col>
+          <Button variant="success" onClick={save}>
+            Salvar
+          </Button>
+        </Col>
+       </Row>
     </div>
   )
 }

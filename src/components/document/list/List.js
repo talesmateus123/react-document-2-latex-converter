@@ -6,7 +6,7 @@ import { Form, Button, Table, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
-import DocumentStorageService from '../services/document-storage.service'
+import DocumentStorageService from '../shared/services/document-storage.service'
 
 function List() {
 
@@ -21,7 +21,7 @@ function List() {
       setDocuments(getDocumentsStorage())
       setDocumentsLoaded(true)
     }
-  }, [ documents, documentsLoaded ])
+  }, [ documents, documentsLoaded, getDocumentsStorage ])
 
   const populateDocumentsTable = () => {
     const documentsTable = documents.map(document => {
@@ -46,7 +46,7 @@ function List() {
 
   return (
     <div>
-      <h3>Meus documentos</h3>
+      <h3 className="header">Meus documentos</h3>
       <Row>
         <Col sm={10}>
           <Form>

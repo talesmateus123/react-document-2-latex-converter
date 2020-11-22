@@ -17,7 +17,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, sobrenomeAutor, nomeC
 	this.siglaInstituicao = siglaInstituicao
 	this.campusInstituicao = campusInstituicao
 	this.departamentoInstituicao = departamentoInstituicao
-	this.this.nomeCurso = nomeCurso
+	this.nomeCurso = nomeCurso
 	this.nivelEscolarCurso = nivelEscolarCurso
 	this.nomeOrientador = nomeOrientador
 	this.sobrenomeOrientador = sobrenomeOrientador
