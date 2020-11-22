@@ -1,5 +1,5 @@
 import React from 'react'
-import './Form.css'
+import './ElementosPreTextuais.css'
 
 import PropTypes from 'prop-types'
 import { Form as F, Row, Col } from 'react-bootstrap'
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 */
 
-function Form(props) {
+function ElementosPreTextuais(props) {
 
   const setDocumentTitulo = event => {
     props.setDocument({ ...props.document, titulo: event.target.value})
@@ -96,91 +96,99 @@ function Form(props) {
 
   return (
     <div>
-      <Row>
-        <Col className="form-title">Informações do autor</Col>
-      </Row>
-      <Row>
-        <Col sm={6}>
-          <F.Group>
-            <F.Control 
-              placeholder="Nome"
-              value={props.document.nomeAutor || ''}
-              onChange={event => setDocumentNomeAutor(event)}
-            />
-          </F.Group>
-        </Col>
-        <Col sm={6}>
-          <F.Group>
-            <F.Control 
-              placeholder="Sobrenome"
-              value={props.document.nomeAutor || ''}
-              onChange={event => setDocumentSobrenomeAutor(event)}
-            />
-          </F.Group>
-        </Col>
-      </Row>
-      <hr/>
-      <Row>
-        <Col className="form-title">Informações do Documento</Col>
-      </Row>
-      <Row>
-        <Col>
-          <F.Group>
-            <F.Control 
-              placeholder="Título"
-              type="text"
-              value={props.document.titulo || ''}
-              onChange={event => setDocumentTitulo(event)}
-            />
-          </F.Group>
-          <F.Group>
-            <F.Control 
-              placeholder="Sub título"
-              value={props.document.subTitulo || ''}
-              onChange={event => setDocumentSubTitulo(event)}
-            />
-          </F.Group>
-          <F.Group>
-            <F.Control 
-              placeholder="Título em inglês"
-              type="text"
-              value={props.document.title || ''}
-              onChange={event => setDocumentTitle(event)}
-            />
-          </F.Group>
-          <F.Group>
-            <F.Control 
-              placeholder="Cidade"
-              type="text"
-              value={props.document.nomeCidade || ''}
-              onChange={event => setDocumentNomeCidade(event)}
-            />
-          </F.Group>
-          <F.Group>
-            <F.Control 
-              placeholder="Ano"
-              type="number"
-              value={props.document.ano || ''}
-              onChange={event => setDocumentAno(event)}
-            />
-          </F.Group>
-          <F.Group>
-            <F.Control 
-              placeholder="Data aprovação"
-              type="date"
-              value={props.document.dataAprovacao || ''}
-              onChange={event => setDocumentDataAprovacao(event)}
-            />
-          </F.Group>
-        </Col>
-      </Row>
+      <F
+        validated={props.validated}
+        noValidate
+        onSubmit={props.save}
+      >
+        <Row>
+          <Col className="form-title">Informações do autor</Col>
+        </Row>
+        <Row>
+          <Col sm={6}>
+            <F.Group>
+              <F.Control 
+                placeholder="Nome"
+                value={props.document.nomeAutor || ''}
+                onChange={event => setDocumentNomeAutor(event)}
+              />
+            </F.Group>
+          </Col>
+          <Col sm={6}>
+            <F.Group>
+              <F.Control 
+                placeholder="Sobrenome"
+                value={props.document.sobrenomeAutor || ''}
+                onChange={event => setDocumentSobrenomeAutor(event)}
+              />
+            </F.Group>
+          </Col>
+        </Row>
+        <hr/>
+        <Row>
+          <Col className="form-title">Informações do Documento</Col>
+        </Row>
+        <Row>
+          <Col>
+            <F.Group>
+              <F.Control 
+                placeholder="Título"
+                type="text"
+                value={props.document.titulo || ''}
+                onChange={event => setDocumentTitulo(event)}
+              />
+            </F.Group>
+            <F.Group>
+              <F.Control 
+                placeholder="Sub título"
+                value={props.document.subTitulo || ''}
+                onChange={event => setDocumentSubTitulo(event)}
+              />
+            </F.Group>
+            <F.Group>
+              <F.Control 
+                placeholder="Título em inglês"
+                type="text"
+                value={props.document.title || ''}
+                onChange={event => setDocumentTitle(event)}
+              />
+            </F.Group>
+            <F.Group>
+              <F.Control 
+                placeholder="Cidade"
+                type="text"
+                value={props.document.nomeCidade || ''}
+                onChange={event => setDocumentNomeCidade(event)}
+              />
+            </F.Group>
+            <F.Group>
+              <F.Control 
+                placeholder="Ano"
+                type="number"
+                value={props.document.ano || ''}
+                onChange={event => setDocumentAno(event)}
+              />
+            </F.Group>
+            <F.Group>
+              <F.Control 
+                placeholder="Data aprovação"
+                type="date"
+                value={props.document.dataAprovacao || ''}
+                onChange={event => setDocumentDataAprovacao(event)}
+              />
+            </F.Group>
+          </Col>
+        </Row>
+      </F>
     </div>
   )
 }
 
-Form.propTypes = {
+ElementosPreTextuais.propTypes = {
   document: PropTypes.object.isRequired,
-  setDocument: PropTypes.func.isRequired
+  setDocument: PropTypes.func.isRequired,
+  validated: PropTypes.bool.isRequired,
+  setValidated: PropTypes.func.isRequired
 }
 
-export default Form
+export default ElementosPreTextuais
