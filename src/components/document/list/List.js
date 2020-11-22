@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './List.css'
 
-import { A } from 'hookrouter'
+import { A, navigate } from 'hookrouter'
 import { Form, Button, Table, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -30,7 +30,7 @@ function List() {
           <td>{document.titulo}</td>
           <td>{document.subTitulo}</td>
           <td className="text-center">
-            <Button variant="info" className="btn-sm" onClick={() => alert("Teste")} data-testid="btn-open-modal">
+            <Button className="btn-sm btn-info" onClick={() => navigate(`/info/${document.id}`)} data-testid="btn-open-modal">
               <FontAwesomeIcon icon={faEdit} />
             </Button>
             &nbsp;
@@ -46,7 +46,7 @@ function List() {
 
   return (
     <div>
-      <h1>Meus documentos</h1>
+      <h3>Meus documentos</h3>
       <Row>
         <Col sm={10}>
           <Form>
