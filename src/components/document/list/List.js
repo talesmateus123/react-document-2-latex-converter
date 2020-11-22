@@ -10,14 +10,18 @@ import DocumentStorageService from '../services/document-storage.service'
 
 function List() {
 
-  const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
+  const [ getDocumentsStorage ] = DocumentStorageService()
 
   const [ documents, setDocuments ] = useState([])
+  const [ documentsLoaded, setDocumentsLoaded ] = useState(false)
   const [ filter, setFilter ] = useState('')
 
   useEffect(() => {
-    setDocuments(getDocumentsStorage())
-  })
+    if(!documentsLoaded) {
+      setDocuments(getDocumentsStorage())
+      setDocumentsLoaded(true)
+    }
+  }, [ documents, documentsLoaded ])
 
   const populateDocumentsTable = () => {
     const documentsTable = documents.map(document => {
@@ -53,7 +57,7 @@ function List() {
           <A 
             href="/new" 
             className="btn btn-success btn-sm" 
-            style={{width: '100%'}}
+            style={{width: '100%', height: '100%'}}
             data-testid="btn-new"
           >
             <FontAwesomeIcon icon={faPlus} />
