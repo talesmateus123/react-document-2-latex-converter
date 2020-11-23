@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Tabs, Tab } from 'react-bootstrap'
 
 import GeneralInfo from './GeneralInfo/GeneralInfo'
+import ElementosPreTextuais from './ElementosPreTextuais/ElementosPreTextuais'
 
 function MainForm(props) {
   return (
@@ -17,8 +18,13 @@ function MainForm(props) {
             setValidated={props.setValidated}
           />
         </Tab>
-        <Tab eventKey="profile" title="Profile">
-          <p>Tab2</p>
+        <Tab eventKey="elementos-pre-textuais" title="Elementos pré-textuais">
+          <ElementosPreTextuais
+            document={props.document}
+            setDocument={props.setDocument}
+            validated={props.validated}
+            setValidated={props.setValidated}
+          />
         </Tab>
         <Tab eventKey="contact" title="Contact" disabled>
           <p>Tab2</p>

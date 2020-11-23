@@ -7,7 +7,11 @@ import ElementosPreTextuais from './ElementosPreTextuais'
 describe('ElementosPreTextuais', () => {
     it('renders without crash', () => {
         const div = document.createElement('div')
-        render(<ElementosPreTextuais />, div)
+        render(<ElementosPreTextuais
+            document={{}}
+            setDocument={() => false}
+            validated={false}
+            setValidated={() => false} />, div)
         unmountComponentAtNode(div)
     });
 })
