@@ -27,7 +27,7 @@ function MockDocument() {
     ]
 
     const documentModel = new Document(
-        new Date().getTime(), 'titulo', 'subTitulo', 'title', 'nomeAutor', 'sobrenomeAutor', 'nomeCidade', 2020, null,  'tipoTrabalho','tituloAcademico', 'areaConcentracao', 'linhaPesquisa', 'nomeInstituicao', 'siglaInstituicao', 'campusInstituicao', 'departamentoInstituicao','nomeCurso', 'nivelEscolarCurso', 'nomeOrientador', 'sobrenomeOrientador', 'nomeCoorientador', 'sobrenomeCoorientador', 'textoAbstractX', palavrasChaveAbstractX, 'agradecimentos', 'dedicatoria', 'epigrafe', fichaCatalograficaPalavrasChave, 'preAmbulo', 'textoResumo', palavrasChaveResumo, listaSiglas, listaSimbolos, 'enabledAgradecimentos', 'enabledDedicatoria', 'enabledEpigrafe', 'enabledFichaCatalografica', 'enabledListaSiglas', 'enabledListaSimbolos', 'enabledListaTabelas', 'enabledListaAlgoritmos', 'enabledListaFiguras', 'enabledListaQuadros', capitulos, apendices, anexos)
+        new Date().getTime(), 'titulo', 'subTitulo', 'title', 'nomeAutor', 'nomeCidade', 2020, null,  'tipoTrabalho','tituloAcademico', 'areaConcentracao', 'linhaPesquisa', 'nomeInstituicao', 'siglaInstituicao', 'campusInstituicao', 'departamentoInstituicao','nomeCurso', 'nivelEscolarCurso', 'nomeOrientador', 'nomeCoorientador', 'textoAbstractX', palavrasChaveAbstractX, 'agradecimentos', 'dedicatoria', 'epigrafe', fichaCatalograficaPalavrasChave, 'preAmbulo', 'textoResumo', palavrasChaveResumo, listaSiglas, listaSimbolos, 'enabledAgradecimentos', 'enabledDedicatoria', 'enabledEpigrafe', 'enabledFichaCatalografica', 'enabledListaSiglas', 'enabledListaSimbolos', 'enabledListaTabelas', 'enabledListaAlgoritmos', 'enabledListaFiguras', 'enabledListaQuadros', capitulos, apendices, anexos)
     
     return documentModel
 }

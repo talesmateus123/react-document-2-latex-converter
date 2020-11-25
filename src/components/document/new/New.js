@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './New.css'
 
 import { navigate } from 'hookrouter'
-import { Form as F, Button, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 /*
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'

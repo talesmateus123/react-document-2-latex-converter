@@ -1,11 +1,10 @@
-function Document(id, titulo, subTitulo, title, nomeAutor, sobrenomeAutor, nomeCidade, ano, dataAprovacao, tipoTrabalho, tituloAcademico, areaConcentracao, linhaPesquisa, nomeInstituicao, siglaInstituicao, campusInstituicao, departamentoInstituicao, nomeCurso, nivelEscolarCurso, nomeOrientador, sobrenomeOrientador, nomeCoorientador, sobrenomeCoorientador, textoAbstractX, palavrasChaveAbstractX, agradecimentos, dedicatoria, epigrafe, fichaCatalograficaPalavrasChave, preAmbulo, textoResumo, palavrasChaveResumo, listaSiglas, listaSimbolos, enabledAgradecimentos, enabledDedicatoria, enabledEpigrafe, enabledFichaCatalografica, enabledListaSiglas, enabledListaSimbolos, enabledListaTabelas, enabledListaAlgoritmos, enabledListaFiguras, enabledListaQuadros, capitulos, apendices, anexos) {
+function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, dataAprovacao, tipoTrabalho, tituloAcademico, areaConcentracao, linhaPesquisa, nomeInstituicao, siglaInstituicao, campusInstituicao, departamentoInstituicao, nomeCurso, nivelEscolarCurso, nomeOrientador, nomeCoorientador, textoAbstractX, palavrasChaveAbstractX, agradecimentos, dedicatoria, epigrafe, fichaCatalograficaPalavrasChave, preAmbulo, textoResumo, palavrasChaveResumo, listaSiglas, listaSimbolos, enabledAgradecimentos, enabledDedicatoria, enabledEpigrafe, enabledFichaCatalografica, enabledListaSiglas, enabledListaSimbolos, enabledListaTabelas, enabledListaAlgoritmos, enabledListaFiguras, enabledListaQuadros, capitulos, apendices, anexos) {
     
     this.id = id
 	this.titulo = titulo
 	this.subTitulo = subTitulo
 	this.title = title
 	this.nomeAutor = nomeAutor
-	this.sobrenomeAutor = sobrenomeAutor
 	this.nomeCidade = nomeCidade
 	this.ano = ano
     this.dataAprovacao = dataAprovacao
@@ -20,9 +19,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, sobrenomeAutor, nomeC
 	this.nomeCurso = nomeCurso
 	this.nivelEscolarCurso = nivelEscolarCurso
 	this.nomeOrientador = nomeOrientador
-	this.sobrenomeOrientador = sobrenomeOrientador
 	this.nomeCoorientador = nomeCoorientador
-	this.sobrenomeCoorientador = sobrenomeCoorientador
 	this.textoAbstractX =textoAbstractX
 	this.palavrasChaveAbstractX = palavrasChaveAbstractX
 	this.agradecimentos = agradecimentos
@@ -54,7 +51,6 @@ function Document(id, titulo, subTitulo, title, nomeAutor, sobrenomeAutor, nomeC
         subTitulo: subTitulo,
         title: title,
         nomeAutor: nomeAutor,
-        sobrenomeAutor: sobrenomeAutor,
         nomeCidade: nomeCidade,
         ano: ano,
         dataAprovacao: dataAprovacao,
@@ -69,9 +65,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, sobrenomeAutor, nomeC
         nomeCurso: nomeCurso,
         nivelEscolarCurso: nivelEscolarCurso,
         nomeOrientador: nomeOrientador,
-        sobrenomeOrientador: sobrenomeOrientador,
         nomeCoorientador: nomeCoorientador,
-        sobrenomeCoorientador: sobrenomeCoorientador,
         textoAbstractX:textoAbstractX,
         palavrasChaveAbstractX: palavrasChaveAbstractX,
         agradecimentos: agradecimentos,
