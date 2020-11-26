@@ -3,41 +3,28 @@ import './New.css'
 
 import { navigate } from 'hookrouter'
 import { Button, Row, Col } from 'react-bootstrap';
-/*
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
-*/
 
-// import DocumentStorageService from '../services/document-storage.service'
+import DocumentStorageService from '../shared/services/document-storage.service'
 import MainForm from '../form/MainForm'
 import Document from '../shared/models/document.model'
 
 function New() {
 
-  // const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
+  const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
   const [ document, setDocument ] = useState(new Document())
   const [ validated, setValidated ] = useState(false)
 
   const save = () => {
-    console.log(document)
-    // setDocumentsStorage(getDocumentsStorage.append(document))
-    // navigate('/')
+    const documents = getDocumentsStorage()
+    documents.push(document)
+    setDocumentsStorage(documents)
+    navigate('/')
   }
 
   return (
     <div>
-      <h3 className="header">Novo documento: 
-        {document.titulo}
-      </h3>
-      <Row>
-        <Col sm={10}>
-          
-        </Col>
-        <Col sm={2} className="text-right">
-          
-        </Col>
-      </Row>
+      <h3 className="header">Novo documento</h3>
 
       <Row style={{paddingTop: 10}}>
         <Col>
@@ -47,6 +34,7 @@ function New() {
             validated={validated}
             setValidated={setValidated}
             save={save}
+            isInfoForm={false}
           />
         </Col>
       </Row>

@@ -5,4 +5,5 @@ const TipoTrabalho = {
     PROJETO_QUALIFICACAO: 'Projeto de Qualificação'
 }
 
+Object.freeze(TipoTrabalho)
 export default TipoTrabalho

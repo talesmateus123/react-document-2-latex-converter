@@ -6,4 +6,5 @@ const NivelEscolar = {
     DOUTORADO: 'Nível de Doutorado'
 }
 
+Object.freeze(NivelEscolar)
 export default NivelEscolar

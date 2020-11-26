@@ -118,9 +118,6 @@ function GeneralInfo(props) {
       >
         <br/>
         <F.Row>
-          <Col className="form-title">Informações do Documento</Col>
-        </F.Row>
-        <F.Row>
           <Col>
             <F.Group>
               <F.Label>Título</F.Label>

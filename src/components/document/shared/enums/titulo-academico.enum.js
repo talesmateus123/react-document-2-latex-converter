@@ -5,4 +5,5 @@ const TituloAcademico = {
     DOUTOR: 'Doutor'
 }
 
+Object.freeze(TituloAcademico)
 export default TituloAcademico

@@ -2,11 +2,7 @@ import React from 'react'
 import './ElementosPreTextuais.css'
 
 import PropTypes from 'prop-types'
-import { Form as F, Row, Col } from 'react-bootstrap'
-/*
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
-*/
+import { Form as F, Col } from 'react-bootstrap'
 
 function ElementosPreTextuais(props) {
 
@@ -21,13 +17,8 @@ function ElementosPreTextuais(props) {
         noValidate
         onSubmit={props.save}
       >
-        <Row>
-          <Col className="form-title">Informações do autor</Col>
-        </Row>
-        <Row>
-          <Col className="form-title">Informações do Documento</Col>
-        </Row>
-        <Row>
+        
+        <F.Row>
           <Col>
             <F.Group>
               <F.Control 
@@ -38,7 +29,7 @@ function ElementosPreTextuais(props) {
               />
             </F.Group>
           </Col>
-        </Row>
+        </F.Row>
       </F>
     </div>
   )

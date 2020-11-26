@@ -4,18 +4,16 @@ import './Info.css'
 import { navigate } from 'hookrouter'
 import PropTypes from 'prop-types'
 import { Button, Row, Col } from 'react-bootstrap';
-/*
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
-*/
 
+import MainForm from '../form/MainForm'
 import DocumentStorageService from '../shared/services/document-storage.service'
 
 function Info(props) {
 
-  const [ getDocumentsStorage ] = DocumentStorageService()
+  const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
-  const [ document, setDocument ] = useState(null)
+  const [ document, setDocument ] = useState({})
+  const [ validated, setValidated ] = useState(false)
 
   useEffect(() => {
     const getDocument = () => {
@@ -25,24 +23,31 @@ function Info(props) {
       return documentsList[0]
     }
 
-    if(!document) {
+    if(Object.keys(document).length === 0 ) {
       setDocument(getDocument())
     }
   }, [ document, props, getDocumentsStorage ])
 
   const save = () => {
-    
+    const documents = getDocumentsStorage()
+    // TODO updates the document
+    setDocumentsStorage(documents)
+    navigate('/')
   }
   
   return (
     <div>
       <h3 className="header">Informações do documento</h3>
       <Row>
-        <Col sm={10}>
-          
-        </Col>
-        <Col sm={2} className="text-right">
-          
+        <Col>
+          <MainForm
+            document={document}
+            setDocument={setDocument}
+            validated={validated}
+            setValidated={setValidated}
+            save={save}
+            isInfoForm={true}
+          />
         </Col>
       </Row>
 

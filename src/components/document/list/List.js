@@ -19,6 +19,7 @@ function List() {
   useEffect(() => {
     if(!documentsLoaded) {
       setDocuments(getDocumentsStorage())
+      console.log(getDocumentsStorage())
       setDocumentsLoaded(true)
     }
   }, [ documents, documentsLoaded, getDocumentsStorage ])

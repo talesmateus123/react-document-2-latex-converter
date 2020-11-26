@@ -20,7 +20,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
 	this.nivelEscolarCurso = nivelEscolarCurso
 	this.nomeOrientador = nomeOrientador
 	this.nomeCoorientador = nomeCoorientador
-	this.textoAbstractX =textoAbstractX
+	this.textoAbstractX = textoAbstractX
 	this.palavrasChaveAbstractX = palavrasChaveAbstractX
 	this.agradecimentos = agradecimentos
 	this.dedicatoria = dedicatoria
@@ -46,7 +46,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
     this.anexos = anexos
     
     return {
-        id: id,
+        id: id ? id : new Date().getTime(),
         titulo: titulo,
         subTitulo: subTitulo,
         title: title,
@@ -54,8 +54,8 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
         nomeCidade: nomeCidade,
         ano: ano,
         dataAprovacao: dataAprovacao,
-        tipoTrabalho: tipoTrabalho,
-        tituloAcademico: tituloAcademico,
+        tipoTrabalho: tipoTrabalho ? tipoTrabalho : 'TCC',
+        tituloAcademico: tituloAcademico ? tituloAcademico : 'BACHAREL',
         areaConcentracao: areaConcentracao,
         linhaPesquisa: linhaPesquisa,
         nomeInstituicao: nomeInstituicao,
@@ -63,7 +63,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
         campusInstituicao: campusInstituicao,
         departamentoInstituicao: departamentoInstituicao,
         nomeCurso: nomeCurso,
-        nivelEscolarCurso: nivelEscolarCurso,
+        nivelEscolarCurso: nivelEscolarCurso ? nivelEscolarCurso : 'SUPERIOR',
         nomeOrientador: nomeOrientador,
         nomeCoorientador: nomeCoorientador,
         textoAbstractX:textoAbstractX,
