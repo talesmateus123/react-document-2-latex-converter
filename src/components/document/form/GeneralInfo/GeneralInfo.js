@@ -3,10 +3,6 @@ import './GeneralInfo.css'
 
 import PropTypes from 'prop-types'
 import { Form as F, Col } from 'react-bootstrap'
-/*
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
-*/
 
 import NivelEscolarEnum from '../../shared/enums/nivel-escolar.enum'
 import TipoTrabalhoEnum from '../../shared/enums/tipo-trabalho.enum'
@@ -247,6 +243,7 @@ function GeneralInfo(props) {
         <F.Row>
           <Col>
             <F.Group>
+              <F.Label>Nome</F.Label>
               <F.Control 
                 placeholder="Nome"
                 type="text"
@@ -259,6 +256,7 @@ function GeneralInfo(props) {
         <F.Row>
           <Col>
             <F.Group>
+              <F.Label>Sigla</F.Label>
               <F.Control 
                 placeholder="Sigla"
                 type="text"
@@ -269,6 +267,7 @@ function GeneralInfo(props) {
           </Col>
           <Col>
             <F.Group>
+              <F.Label>Campus</F.Label>
               <F.Control 
                 placeholder="Campus"
                 type="text"

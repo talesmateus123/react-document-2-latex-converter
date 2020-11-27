@@ -29,8 +29,11 @@ function Info(props) {
   }, [ document, props, getDocumentsStorage ])
 
   const save = () => {
-    const documents = getDocumentsStorage()
-    // TODO updates the document
+    const documents = getDocumentsStorage().map(arrayDocument => {
+      if(arrayDocument.id === document.id) 
+        return document
+      return arrayDocument
+    })
     setDocumentsStorage(documents)
     navigate('/')
   }
