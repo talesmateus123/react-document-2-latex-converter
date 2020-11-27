@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 import DocumentStorageService from '../shared/services/document-storage.service'
+import RemoveModal from '../modals/remove/Remove'
 
 function List() {
 
@@ -15,6 +16,8 @@ function List() {
   const [ documents, setDocuments ] = useState([])
   const [ loadDocuments, setLoadDocuments ] = useState(true)
   const [ filter, setFilter ] = useState('')
+  const [ currentId, setCurrentId ] = useState(0)
+  const [ showModal, setShowModal ] = useState(false)
 
   useEffect(() => {
     if(loadDocuments) {
@@ -35,7 +38,7 @@ function List() {
               <FontAwesomeIcon icon={faEdit} />
             </Button>
             &nbsp;
-            <Button variant="danger" className="btn-sm" onClick={() => alert("Teste")} data-testid="btn-open-modal">
+            <Button variant="danger" className="btn-sm" onClick={() => handleOpenRemoveModal(document.id)} data-testid="btn-open-modal">
               <FontAwesomeIcon icon={faTrashAlt} />
             </Button>
           </td>
@@ -48,6 +51,11 @@ function List() {
   const handleFilter = event => {
     setFilter(event.target.value)
     setLoadDocuments(true)
+  }
+
+  const handleOpenRemoveModal = id => {
+    setCurrentId(id)
+    setShowModal(true)
   }
 
   return (
@@ -98,6 +106,12 @@ function List() {
           </tbody>
         </Table>
       </Row>
+      <RemoveModal
+        id={currentId}
+        setLoadDocuments={setLoadDocuments}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   )
 }
