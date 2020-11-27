@@ -1,11 +1,11 @@
 import React from 'react'
-import './ElementosPreTextuais.css'
+import './ElementosPosTextuais.css'
 
 import PropTypes from 'prop-types'
 import { Form as F, Col } from 'react-bootstrap'
 
 // TODO Implementation is missing
-function ElementosPreTextuais(props) {
+function ElementosPosTextuais(props) {
 
   const setDocumentTitulo = event => {
     props.setDocument({ ...props.document, titulo: event.target.value})
@@ -36,11 +36,11 @@ function ElementosPreTextuais(props) {
   )
 }
 
-ElementosPreTextuais.propTypes = {
+ElementosPosTextuais.propTypes = {
   document: PropTypes.object.isRequired,
   setDocument: PropTypes.func.isRequired,
   validated: PropTypes.bool.isRequired,
   setValidated: PropTypes.func.isRequired
 }
 
-export default ElementosPreTextuais
+export default ElementosPosTextuais
