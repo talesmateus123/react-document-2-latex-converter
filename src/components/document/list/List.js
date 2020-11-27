@@ -13,16 +13,16 @@ function List() {
   const [ getDocumentsStorage ] = DocumentStorageService()
 
   const [ documents, setDocuments ] = useState([])
-  const [ documentsLoaded, setDocumentsLoaded ] = useState(false)
+  const [ loadDocuments, setLoadDocuments ] = useState(true)
   const [ filter, setFilter ] = useState('')
 
   useEffect(() => {
-    if(!documentsLoaded) {
-      setDocuments(getDocumentsStorage())
-      console.log(getDocumentsStorage())
-      setDocumentsLoaded(true)
+    if(loadDocuments) {
+      let documentsStorage = getDocumentsStorage().filter(document => document.titulo.toLowerCase().indexOf(filter.toLowerCase()) === 0)
+      setDocuments(documentsStorage)
+      setLoadDocuments(false)
     }
-  }, [ documents, documentsLoaded, getDocumentsStorage ])
+  }, [ documents, loadDocuments, getDocumentsStorage, filter ])
 
   const populateDocumentsTable = () => {
     const documentsTable = documents.map(document => {
@@ -45,13 +45,18 @@ function List() {
     return documentsTable
   }
 
+  const handleFilter = event => {
+    setFilter(event.target.value)
+    setLoadDocuments(true)
+  }
+
   return (
     <div>
       <h3 className="header">Meus documentos</h3>
       <Row>
         <Col sm={10}>
           <Form>
-            <Form.Control value={filter} placeholder="Pesquisar" onChange={event => setFilter(event.target.value)} data-testid="form-control-filter"/>
+            <Form.Control value={filter} placeholder="Pesquisar" onChange={handleFilter} data-testid="form-control-filter"/>
           </Form>
         </Col>
         <Col sm={2} className="text-right">

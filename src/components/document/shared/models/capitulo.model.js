@@ -5,7 +5,7 @@ function Capitulo(id, titulo, body) {
     this.body = body
 
     return {
-        id: id,
+        id: id ? id : new Date().getTime(),
         titulo: titulo,
         body: body
     }
