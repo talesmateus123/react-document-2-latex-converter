@@ -8,10 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 import Capitulo from '../../shared/models/capitulo.model'
+import RemoveChapterModal from '../modals/RemoveChapter/RemoveChapter'
+import EditChapterName from '../modals/EditChapterName/EditChapterName'
 
 function Editor(props) {
 
   const [ currentChapterIndex, setCurrentChapterIndex ] = useState(0)
+  const [ showRemoveModal, setShowRemoveModal ] = useState(false)
+  const [ showEditNameModal, setShowEditNameModal ] = useState(false)
 
   const getButtonChapters = () => {
     if(props.chapters && props.chapters.length >= 1) {
@@ -23,7 +27,7 @@ function Editor(props) {
               className="btn-sm btn-block"
               key={index}
               onClick={() => handleChangeChapter(chapter.id)}
-              onDoubleClick={() => console.log('double click')}
+              onDoubleClick={() => setShowEditNameModal(true)}
             >
               {chapter.titulo}
             </Button>
@@ -42,7 +46,7 @@ function Editor(props) {
     currentChapterIndex === null && setCurrentChapterIndex(props.chapters.indexOf(chapter))
   }
 
-  const handleDeleteChapter = () => {
+  const handleRemoveChapter = () => {
     const chapters = props.chapters.filter((_, index) => index !== currentChapterIndex)
     if(chapters.length !== 0)
       setCurrentChapterIndex(0)
@@ -85,7 +89,7 @@ function Editor(props) {
   return (
     <div>
       <F.Row>
-        <Col md={2}>
+        <Col md={4}>
           <F.Row md={10} style={{overflowY: ' auto', maxHeight: '250px'}}>
             {getButtonChapters()}
           </F.Row>
@@ -95,15 +99,33 @@ function Editor(props) {
             </Button>
             &nbsp;
             <br/>
-            <Button className="btn-sm" onClick={() => handleDeleteChapter()}>
+            <Button className="btn-sm" onClick={() => setShowRemoveModal(true)}>
               <FontAwesomeIcon icon={faMinus} /> &nbsp; Remover capítulo
             </Button>
           </F.Row>
         </Col>
-        <Col md={10}>
+        <Col md={8}>
           {getEditor()}
         </Col>
       </F.Row>
+      {
+        props.chapters ? 
+          <div>
+            <RemoveChapterModal 
+              handleRemoveChapter={handleRemoveChapter}
+              showModal={showRemoveModal}
+              setShowModal={setShowRemoveModal}
+            />
+
+            <EditChapterName
+              handleSetChapter={handleSetChapter}
+              chapter={props.chapters[currentChapterIndex]}
+              showModal={showEditNameModal}
+              setShowModal={setShowEditNameModal}
+            />
+          </div>
+        : null
+      }
     </div>
   )
 }

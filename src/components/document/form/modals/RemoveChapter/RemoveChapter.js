@@ -8,12 +8,8 @@ function RemoveChapter(props) {
     props.setShowModal(false)
   }
 
-  const handleRemoveTask = event => {
-    /*
-    const documents = getDocumentsStorage().filter(document => document.id !== props.id)
-    setDocumentsStorage(documents)
-    props.setLoadDocuments(true)
-    */
+  const handleRemoveChapter = () => {
+    props.handleRemoveChapter()
     handleCloseModal()
   }
   
@@ -33,10 +29,10 @@ function RemoveChapter(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Tem certeza que deseja excluir o documento?
+          Tem certeza que deseja excluir o capítulo?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleRemoveTask} data-testid="btn-remove-task">
+          <Button variant="primary" onClick={handleRemoveChapter} data-testid="btn-remove-chapter">
             Sim
           </Button>
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
@@ -49,10 +45,9 @@ function RemoveChapter(props) {
 }
 
 RemoveChapter.propTypes = {
-  id: PropTypes.number.isRequired,
-  setLoadDocuments: PropTypes.func.isRequired,
+  handleRemoveChapter: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired
+  setShowModal: PropTypes.func.isRequired,
 }
 
 export default RemoveChapter;
