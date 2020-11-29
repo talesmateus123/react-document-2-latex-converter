@@ -2,37 +2,41 @@ import React from 'react'
 import './ElementosPosTextuais.css'
 
 import PropTypes from 'prop-types'
-import { Form as F, Col } from 'react-bootstrap'
+import { Tabs, Tab } from 'react-bootstrap'
 
-// TODO Implementation is missing
+import Editor from '../Editor/Editor'
+
 function ElementosPosTextuais(props) {
+  
+  const setApendices = chapters => {
+    props.setDocument({ ...props.document, apendices: chapters })
+  }
 
-  const setDocumentTitulo = event => {
-    props.setDocument({ ...props.document, titulo: event.target.value})
+  const setAnexos = chapters => {
+    props.setDocument({ ...props.document, anexos: chapters })
   }
 
   return (
-    <div>
-      <F
-        validated={props.validated}
-        noValidate
-        onSubmit={props.save}
-      >
-        
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Control 
-                placeholder="Título"
-                type="text"
-                value={props.document.titulo || ''}
-                onChange={setDocumentTitulo}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
-      </F>
-    </div>
+    <Tabs defaultActiveKey="apencices" id="main-form-tabs">
+      <Tab eventKey="apencices" title="Apêncices">
+        <br/>
+        <Editor
+          chapters={props.document.apendices}
+          setChapters={setApendices}
+          validated={props.validated}
+          setValidated={props.setValidated}
+        />
+      </Tab>
+      <Tab eventKey="anexos" title="Anexos">
+        <br/>
+        <Editor
+          chapters={props.document.anexos}
+          setChapters={setAnexos}
+          validated={props.validated}
+          setValidated={props.setValidated}
+        />
+      </Tab>
+    </Tabs>
   )
 }
 

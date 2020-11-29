@@ -6,6 +6,8 @@ import { Tabs, Tab } from 'react-bootstrap'
 import GeneralInfo from './GeneralInfo/GeneralInfo'
 import ElementosPreTextuais from './ElementosPreTextuais/ElementosPreTextuais'
 import ElementosTextuais from './ElementosTextuais/ElementosTextuais'
+import ElementosPosTextuais from './ElementosPosTextuais/ElementosPosTextuais'
+import Exports from './Exports/Exports'
 
 function MainForm(props) {
   return (
@@ -45,6 +47,21 @@ function MainForm(props) {
               setDocument={props.setDocument}
               validated={props.validated}
               setValidated={props.setValidated}
+            />
+          </Tab>
+          <Tab eventKey="elementos-pos-textuais" title="Elementos pós-textuais">
+            <br/>
+            <ElementosPosTextuais
+              document={props.document}
+              setDocument={props.setDocument}
+              validated={props.validated}
+              setValidated={props.setValidated}
+            />
+          </Tab>
+          <Tab eventKey="exports" title="Exportar">
+            <br/>
+            <Exports
+              document={props.document}
             />
           </Tab>
         </Tabs>

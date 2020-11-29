@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 import DocumentStorageService from '../shared/services/document-storage.service'
-import RemoveModal from '../modals/remove/Remove'
+import RemoveDocumentModal from '../modals/remove/RemoveDocument'
 
 function List() {
 
@@ -106,7 +106,7 @@ function List() {
           </tbody>
         </Table>
       </Row>
-      <RemoveModal
+      <RemoveDocumentModal
         id={currentId}
         setLoadDocuments={setLoadDocuments}
         showModal={showModal}
