@@ -87,9 +87,9 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
         enabledListaAlgoritmos: enabledListaAlgoritmos,
         enabledListaFiguras: enabledListaFiguras,
         enabledListaQuadros: enabledListaQuadros,
-        capitulos: capitulos,
-        apendices: apendices,
-        anexos: anexos
+        capitulos: capitulos ? capitulos : [],
+        apendices: apendices ? apendices : [],
+        anexos: anexos ? anexos : []
     }
 }
 

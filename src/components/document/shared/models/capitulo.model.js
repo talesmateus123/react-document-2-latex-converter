@@ -7,7 +7,7 @@ function Capitulo(id, titulo, body) {
     return {
         id: id ? id : new Date().getTime(),
         titulo: titulo,
-        body: body
+        body: body ? body : ''
     }
 }
 

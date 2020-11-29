@@ -1,3 +1,13 @@
 .form-title {
     padding-bottom: 10px;
 }
+
+br {
+    display: block;
+    margin: 3px 0;
+}
+
+.btn-chapter {
+    width: '100%'
+}
+ 

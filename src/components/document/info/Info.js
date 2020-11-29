@@ -54,7 +54,7 @@ function Info(props) {
         </Col>
       </Row>
 
-      <Row style={{paddingTop: 10}}>
+      <Row>
         <Col className="text-right">
           <Button variant="info" onClick={() => navigate('/')}>
             Voltar
