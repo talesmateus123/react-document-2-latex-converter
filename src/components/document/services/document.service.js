@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 import PropTypes from 'prop-types'
-const FileDownload = require('js-file-download');
-
-const API_URL = process.env.REACT_APP_API_URL
+import FileDownload from 'js-file-download'
 
 function DocumentService(props) {
+
+    const API_URL = process.env.REACT_APP_API_URL
 
     const showSuccessMessage = msg => {
         props.setAlert({ msg, err: false})
@@ -13,8 +13,8 @@ function DocumentService(props) {
     }
 
     const showErrorMessage = error => {
-        const msg = error.message
-        props.setAlert({ msg, err: true})
+        props.setAlert({ msg: error.message, err: true})
+        setTimeout(() => props.setAlert(null), 6000)
     }
 
     const generateZippedDocument = async document => {

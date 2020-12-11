@@ -14,7 +14,7 @@ function Exports(props) {
   return (
     <div>
       <Alert variant={alert && alert.err ? 'danger' : 'success'} className={alert ? 'fadeIn' : 'fadeOut'}>
-        <Alert.Heading>{alert && alert.err ? 'Erro!' : 'Sucesso!'}</Alert.Heading>
+        <Alert.Heading>{alert ? alert.err ? 'Erro!' : 'Sucesso!' : ''}</Alert.Heading>
         <p>{ alert && alert.msg }</p>
       </Alert>
 
