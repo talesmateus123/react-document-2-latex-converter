@@ -9,6 +9,7 @@ function DocumentService(props) {
 
     const showSuccessMessage = msg => {
         props.setAlert({ msg, err: false})
+        setTimeout(() => props.setAlert(null), 6000)
     }
 
     const showErrorMessage = error => {

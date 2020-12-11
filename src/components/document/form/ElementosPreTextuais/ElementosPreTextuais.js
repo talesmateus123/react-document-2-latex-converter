@@ -2,36 +2,43 @@ import React from 'react'
 import './ElementosPreTextuais.css'
 
 import PropTypes from 'prop-types'
-import { Form as F, Col } from 'react-bootstrap'
+import { Tabs, Tab } from 'react-bootstrap'
 
-// TODO Implementation is missing
+import Options from './Options'
+
 function ElementosPreTextuais(props) {
 
-  const setDocumentTitulo = event => {
-    props.setDocument({ ...props.document, titulo: event.target.value})
-  }
+  /*
+    TODO: Is missing implementation of:
+    textoAbstractX
+    palavrasChaveAbstractX
+    agradecimentos
+    dedicatoria
+    epigrafe
+    fichaCatalograficaPalavrasChave
+    preAmbulo
+    textoResumo
+    palavrasChaveResumo
+    listaSiglas
+    listaSimbolos
+  */
 
   return (
     <div>
-      <F
-        validated={props.validated}
-        noValidate
-        onSubmit={props.save}
+      <Tabs 
+        defaultActiveKey="options" 
+        id="elemsntos-pre-textuais-tabs"
       >
-        
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Control 
-                placeholder="Título"
-                type="text"
-                value={props.document.titulo || ''}
-                onChange={setDocumentTitulo}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
-      </F>
+        <Tab eventKey="options" title="Opções">
+          <br/>
+          <Options
+            document={props.document}
+            setDocument={props.setDocument}
+            validated={props.validated}
+            setValidated={props.setValidated}
+          />
+        </Tab>
+      </Tabs>
     </div>
   )
 }

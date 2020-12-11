@@ -13,19 +13,11 @@ function Exports(props) {
 
   return (
     <div>
-      {
-        alert &&
-        <Alert variant={alert.err ? 'danger' : 'success'}>
-          <Alert.Heading>{alert.err ? 'Erro!' : 'Sucesso!'}</Alert.Heading>
-          <p>{ alert.msg }</p>
-          <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={() => setAlert(null)} variant={alert.err ? 'outline-danger' : 'outline-success'}>
-              Fechar
-            </Button>
-          </div>
-        </Alert>
-      }
+      <Alert variant={alert && alert.err ? 'danger' : 'success'} className={alert ? 'fadeIn' : 'fadeOut'}>
+        <Alert.Heading>{alert && alert.err ? 'Erro!' : 'Sucesso!'}</Alert.Heading>
+        <p>{ alert && alert.msg }</p>
+      </Alert>
+
       <Row>
         <Col className="text-center">
           <Button onClick={() => generateZippedDocument(props.document)}>Projeto LaTeX</Button>
