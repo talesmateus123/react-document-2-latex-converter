@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PropTypes from 'prop-types'
-import { Tabs, Tab } from 'react-bootstrap'
+import { navigate } from 'hookrouter'
+import { Tabs, Tab, Button, Row, Col } from 'react-bootstrap'
 
 import GeneralInfo from './GeneralInfo/GeneralInfo'
 import ElementosPreTextuais from './ElementosPreTextuais/ElementosPreTextuais'
@@ -10,6 +11,8 @@ import ElementosPosTextuais from './ElementosPosTextuais/ElementosPosTextuais'
 import Exports from './Exports/Exports'
 
 function MainForm(props) {
+
+  const [ isExportTabActivated, setExportTabActivated ] = useState(false)
   return (
     <div>
       {
@@ -21,52 +24,72 @@ function MainForm(props) {
           setValidated={props.setValidated}
         />
         :
-        <Tabs defaultActiveKey="general-info" id="main-form-tabs">
-          <Tab eventKey="general-info" title="Informações gerais">
-            <br/>
-            <GeneralInfo
-              document={props.document}
-              setDocument={props.setDocument}
-              validated={props.validated}
-              setValidated={props.setValidated}
-            />
-          </Tab>
-          <Tab eventKey="elementos-pre-textuais" title="Elementos pré-textuais">
-            <br/>
-            <ElementosPreTextuais
-              document={props.document}
-              setDocument={props.setDocument}
-              validated={props.validated}
-              setValidated={props.setValidated}
-            />
-          </Tab>
-          <Tab eventKey="elementos-textuais" title="Elementos textuais">
-            <br/>
-            <ElementosTextuais
-              document={props.document}
-              setDocument={props.setDocument}
-              validated={props.validated}
-              setValidated={props.setValidated}
-            />
-          </Tab>
-          <Tab eventKey="elementos-pos-textuais" title="Elementos pós-textuais">
-            <br/>
-            <ElementosPosTextuais
-              document={props.document}
-              setDocument={props.setDocument}
-              validated={props.validated}
-              setValidated={props.setValidated}
-            />
-          </Tab>
-          <Tab eventKey="exports" title="Exportar">
-            <br/>
-            <Exports
-              document={props.document}
-            />
-          </Tab>
-        </Tabs>
+
+        <div>
+          <Tabs 
+            defaultActiveKey="general-info" 
+            id="main-form-tabs" 
+            onSelect={key => key === 'exports' ? setExportTabActivated(true) : setExportTabActivated(false)}
+          >
+            <Tab eventKey="general-info" title="Informações gerais">
+              <br/>
+              <GeneralInfo
+                document={props.document}
+                setDocument={props.setDocument}
+                validated={props.validated}
+                setValidated={props.setValidated}
+              />
+            </Tab>
+            <Tab eventKey="elementos-pre-textuais" title="Elementos pré-textuais">
+              <br/>
+              <ElementosPreTextuais
+                document={props.document}
+                setDocument={props.setDocument}
+                validated={props.validated}
+                setValidated={props.setValidated}
+              />
+            </Tab>
+            <Tab eventKey="elementos-textuais" title="Elementos textuais">
+              <br/>
+              <ElementosTextuais
+                document={props.document}
+                setDocument={props.setDocument}
+                validated={props.validated}
+                setValidated={props.setValidated}
+              />
+            </Tab>
+            <Tab eventKey="elementos-pos-textuais" title="Elementos pós-textuais">
+              <br/>
+              <ElementosPosTextuais
+                document={props.document}
+                setDocument={props.setDocument}
+                validated={props.validated}
+                setValidated={props.setValidated}
+              />
+            </Tab>
+            <Tab eventKey="exports" title="Exportar">
+              <br/>
+              <Exports
+                document={props.document}
+              />
+            </Tab>
+          </Tabs>
+        </div>
       }
-      
+      {
+        !isExportTabActivated &&
+        <Row>
+          <Col className="text-center">
+            <Button variant="info" onClick={() => navigate('/')}>
+              Voltar
+            </Button>
+            &nbsp;
+            <Button variant="success" onClick={props.save}>
+              Salvar
+            </Button>
+          </Col>
+        </Row>
+      }
     </div>
   )
 }
