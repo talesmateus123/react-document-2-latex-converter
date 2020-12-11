@@ -131,7 +131,7 @@ function Editor(props) {
 }
 
 Editor.propTypes = {
-  chapters: PropTypes.object.isRequired,
+  chapters: PropTypes.array,
   setChapters: PropTypes.func.isRequired,
   validated: PropTypes.bool.isRequired,
   setValidated: PropTypes.func.isRequired
