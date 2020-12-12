@@ -78,17 +78,20 @@ function MainForm(props) {
       }
       {
         !isExportTabActivated &&
-        <Row>
-          <Col className="text-center">
-            <Button variant="info" onClick={() => navigate('/')}>
-              Voltar
-            </Button>
-            &nbsp;
-            <Button variant="success" onClick={props.save}>
-              Salvar
-            </Button>
-          </Col>
-        </Row>
+        <div>
+          <br/>
+          <Row>
+            <Col className="text-center">
+              <Button variant="info" onClick={() => navigate('/')}>
+                Voltar
+              </Button>
+              &nbsp;
+              <Button variant="success" onClick={props.save}>
+                Salvar
+              </Button>
+            </Col>
+          </Row>
+        </div>
       }
     </div>
   )

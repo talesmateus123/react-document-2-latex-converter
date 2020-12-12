@@ -34,7 +34,6 @@ function Info(props) {
       return arrayDocument
     })
     setDocumentsStorage(documents)
-    navigate('/')
   }
   
   return (

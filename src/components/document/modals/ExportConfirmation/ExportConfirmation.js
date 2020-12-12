@@ -7,9 +7,9 @@ function ExportConfirmation(props) {
   const getBody = () => {
     if (!props.status) {
       return (
-        <Spinner animation="border" role="status" className="text-center">
-          <span className="sr-only">Gerando documento...</span>
-        </Spinner>
+        <div className="text-center">
+          <Spinner animation="border" role="status" /> &nbsp; Gerando documento...
+        </div>
       )
     }
     if(props.status.err) {
