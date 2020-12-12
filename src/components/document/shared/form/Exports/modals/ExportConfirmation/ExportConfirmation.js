@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button, Spinner, Alert } from 'react-bootstrap'
 
-function ExportConfirmation(props) {
+function ExportConfirmationModal(props) {
 
   const getBody = () => {
     if (!props.status) {
@@ -70,11 +70,11 @@ function ExportConfirmation(props) {
   )
 }
 
-ExportConfirmation.propTypes = {
-  status: PropTypes.object.isRequired,
+ExportConfirmationModal.propTypes = {
+  status: PropTypes.object,
   setStatus: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired
 }
 
-export default ExportConfirmation;
+export default ExportConfirmationModal;

@@ -7,9 +7,9 @@ import ReactQuill from 'react-quill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
-import Capitulo from '../../shared/models/capitulo.model'
-import RemoveChapterModal from '../modals/RemoveChapter/RemoveChapter'
-import EditChapterName from '../modals/EditChapterName/EditChapterName'
+import Capitulo from '../../models/capitulo.model'
+import RemoveChapterModal from './modals/RemoveChapter/RemoveChapter'
+import EditChapterNameModal from './modals/EditChapterName/EditChapterName'
 
 function Editor(props) {
 
@@ -75,6 +75,7 @@ function Editor(props) {
           if(currentChapterIndex !== null && currentChapterIndex === index) {
             return (
               <ReactQuill
+                key={chapter.id}
                 value={chapter.body}
                 onChange={body => handleSetChapter({ ...chapter, body })}
               />
@@ -109,7 +110,7 @@ function Editor(props) {
         </Col>
       </F.Row>
       {
-        props.chapters ? 
+        props.chapters && props.chapters.length >= 1 ? 
           <div>
             <RemoveChapterModal 
               handleRemoveChapter={handleRemoveChapter}
@@ -117,7 +118,7 @@ function Editor(props) {
               setShowModal={setShowRemoveModal}
             />
 
-            <EditChapterName
+            <EditChapterNameModal
               handleSetChapter={handleSetChapter}
               chapter={props.chapters[currentChapterIndex]}
               showModal={showEditNameModal}

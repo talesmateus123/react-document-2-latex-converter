@@ -4,7 +4,7 @@ import './New.css'
 import { navigate } from 'hookrouter'
 
 import DocumentStorageService from '../shared/services/document-storage.service'
-import MainForm from '../form/MainForm'
+import MainForm from '../shared/form/MainForm'
 import Document from '../shared/models/document.model'
 
 function New() {

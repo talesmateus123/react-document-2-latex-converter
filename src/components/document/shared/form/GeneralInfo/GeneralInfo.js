@@ -4,9 +4,9 @@ import './GeneralInfo.css'
 import PropTypes from 'prop-types'
 import { Form as F, Col } from 'react-bootstrap'
 
-import NivelEscolarEnum from '../../shared/enums/nivel-escolar.enum'
-import TipoTrabalhoEnum from '../../shared/enums/tipo-trabalho.enum'
-import TituloAcademicoEnum from '../../shared/enums/titulo-academico.enum'
+import NivelEscolarEnum from '../../enums/nivel-escolar.enum'
+import TipoTrabalhoEnum from '../../enums/tipo-trabalho.enum'
+import TituloAcademicoEnum from '../../enums/titulo-academico.enum'
 
 function GeneralInfo(props) {
 

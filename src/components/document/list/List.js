@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 import DocumentStorageService from '../shared/services/document-storage.service'
-import RemoveDocumentModal from '../modals/RemoveDocument/RemoveDocument'
+import RemoveDocumentModal from './modals/RemoveDocument/RemoveDocument';
 
 function List() {
 

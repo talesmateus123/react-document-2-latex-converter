@@ -2,19 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button } from 'react-bootstrap'
 
-import DocumentStorageService from '../../shared/services/document-storage.service'
-
-function RemoveDocument(props) {
-
-  const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
+function RemoveChapterModal(props) {
 
   const handleCloseModal = () => {
     props.setShowModal(false)
   }
-  const handleRemoveTask = event => {
-    const documents = getDocumentsStorage().filter(document => document.id !== props.id)
-    setDocumentsStorage(documents)
-    props.setLoadDocuments(true)
+
+  const handleRemoveChapter = () => {
+    props.handleRemoveChapter()
     handleCloseModal()
   }
   
@@ -34,10 +29,10 @@ function RemoveDocument(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Tem certeza que deseja excluir o documento?
+          Tem certeza que deseja excluir o capítulo?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleRemoveTask} data-testid="btn-remove-task">
+          <Button variant="primary" onClick={handleRemoveChapter} data-testid="btn-remove-chapter">
             Sim
           </Button>
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
@@ -49,11 +44,10 @@ function RemoveDocument(props) {
   )
 }
 
-RemoveDocument.propTypes = {
-  id: PropTypes.number.isRequired,
-  setLoadDocuments: PropTypes.func.isRequired,
+RemoveChapterModal.propTypes = {
+  handleRemoveChapter: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
-  setShowModal: PropTypes.func.isRequired
+  setShowModal: PropTypes.func.isRequired,
 }
 
-export default RemoveDocument;
+export default RemoveChapterModal;

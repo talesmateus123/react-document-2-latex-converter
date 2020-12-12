@@ -4,8 +4,8 @@ import './Info.css'
 import PropTypes from 'prop-types'
 import { navigate } from 'hookrouter'
 
-import MainForm from '../form/MainForm'
 import DocumentStorageService from '../shared/services/document-storage.service'
+import MainForm from '../shared/form/MainForm'
 
 function Info(props) {
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'react-bootstrap'
 
 import DocumentService from '../../services/document.service'
-import ExportConfirmation from '../../modals/ExportConfirmation/ExportConfirmation'
+import ExportConfirmationModal from './modals/ExportConfirmation/ExportConfirmation'
 
 function Exports(props) {
 
@@ -24,7 +24,7 @@ function Exports(props) {
       </div>
       <br/>
 
-      <ExportConfirmation
+      <ExportConfirmationModal
         status={status}
         setStatus={setStatus}
         showModal={showModal}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button, Form } from 'react-bootstrap'
 
-function EditChapterName(props) {
+function EditChapterNameModal(props) {
 
   const [ title, setTitle ] = useState(null)
 
@@ -62,11 +62,11 @@ function EditChapterName(props) {
   )
 }
 
-EditChapterName.propTypes = {
+EditChapterNameModal.propTypes = {
   handleSetChapter: PropTypes.func.isRequired,
   chapter: PropTypes.object.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
 }
 
-export default EditChapterName;
+export default EditChapterNameModal;

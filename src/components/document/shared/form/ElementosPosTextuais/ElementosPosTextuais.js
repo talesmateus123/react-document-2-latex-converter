@@ -17,8 +17,8 @@ function ElementosPosTextuais(props) {
   }
 
   return (
-    <Tabs defaultActiveKey="apencices" id="main-form-tabs">
-      <Tab eventKey="apencices" title="Apêncices">
+    <Tabs defaultActiveKey="apendices" id="main-form-tabs">
+      <Tab eventKey="apendices" title="Apêncices">
         <br/>
         <Editor
           chapters={props.document.apendices}
