@@ -8,16 +8,15 @@ function DocumentService(props) {
     const API_URL = process.env.REACT_APP_API_URL
 
     const showSuccessMessage = msg => {
-        props.setAlert({ msg, err: false})
-        setTimeout(() => props.setAlert(null), 6000)
+        props.setStatus({ msg, err: false})
     }
 
     const showErrorMessage = error => {
-        props.setAlert({ msg: error.message, err: true})
-        setTimeout(() => props.setAlert(null), 6000)
+        props.setStatus({ msg: error.message, err: true})
     }
 
     const generateZippedDocument = async document => {
+        props.setShowModal(true)
         try {
             await axios({url: `${API_URL}/zip`, method: 'POST', responseType: 'blob', data: document}).then(res => {
                 FileDownload(res.data, `${document.titulo}.zip`)
@@ -30,6 +29,7 @@ function DocumentService(props) {
     }
     
     const generatePdfDocument = async document => {
+        props.setShowModal(true)
         try {
             await axios({url: `${API_URL}/pdf`, method: 'POST', responseType: 'blob', data: document}).then(res => {
                 FileDownload(res.data, `${document.titulo}.pdf`)
@@ -42,6 +42,7 @@ function DocumentService(props) {
     }
 
     const generateJsonDocument = document => {
+        props.setShowModal(true)
         FileDownload(JSON.stringify(document), `${document.titulo}.json`)
         showSuccessMessage('Arquivo JSON gerado com sucesso.')
     }
@@ -50,7 +51,7 @@ function DocumentService(props) {
 }
 
 DocumentService.propTypes = {
-    setAlert: PropTypes.func
+    setStatus: PropTypes.func
   }
 
 export default DocumentService

@@ -27,8 +27,17 @@ function ElementosPreTextuais(props) {
     <div>
       <Tabs 
         defaultActiveKey="options" 
-        id="elemsntos-pre-textuais-tabs"
+        id="elementos-pre-textuais-tabs"
       >
+        <Tab eventKey="resumo" title="Resumo">
+          <br/>
+        </Tab>
+        <Tab eventKey="lists" title="Listas">
+          <br/>
+        </Tab>
+        <Tab eventKey="others" title="Outros">
+          <br/>
+        </Tab>
         <Tab eventKey="options" title="Opções">
           <br/>
           <Options

@@ -2,32 +2,34 @@ import React, { useState } from 'react'
 import './Exports.css'
 
 import PropTypes from 'prop-types'
-import { Button, Row, Col, Alert } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 import DocumentService from '../../services/document.service'
+import ExportConfirmation from '../../modals/ExportConfirmation/ExportConfirmation'
 
 function Exports(props) {
 
-  const [ alert, setAlert ] = useState(null)
-  const { generateZippedDocument, generatePdfDocument, generateJsonDocument } = DocumentService({setAlert})
+  const [ status, setStatus ] = useState(null)
+  const [ showModal, setShowModal ] = useState(false)  
+  const { generateZippedDocument, generatePdfDocument, generateJsonDocument } = DocumentService({setStatus, setShowModal})
 
   return (
     <div>
-      <Alert variant={alert && alert.err ? 'danger' : 'success'} className={alert ? 'fadeIn' : 'fadeOut'}>
-        <Alert.Heading>{alert ? alert.err ? 'Erro!' : 'Sucesso!' : ''}</Alert.Heading>
-        <p>{ alert && alert.msg }</p>
-      </Alert>
-
-      <Row>
-        <Col className="text-center">
-          <Button onClick={() => generateZippedDocument(props.document)}>Projeto LaTeX</Button>
-          &nbsp;
-          <Button onClick={() => generatePdfDocument(props.document)}>Pdf</Button>
-          &nbsp;
-          <Button onClick={() => generateJsonDocument(props.document)}>Json</Button>
-        </Col>
-      </Row>
+      <div className="text-center">
+        <Button onClick={() => generateZippedDocument(props.document)}>Projeto LaTeX</Button>
+        &nbsp;
+        <Button onClick={() => generatePdfDocument(props.document)}>Pdf</Button>
+        &nbsp;
+        <Button onClick={() => generateJsonDocument(props.document)}>Json</Button>
+      </div>
       <br/>
+
+      <ExportConfirmation
+        status={status}
+        setStatus={setStatus}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   )
 }
