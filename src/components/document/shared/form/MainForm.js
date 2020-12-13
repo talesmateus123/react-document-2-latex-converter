@@ -20,6 +20,7 @@ function MainForm(props) {
     props.save()
     setShowModal(true)
   }
+  
   return (
     <div>
       {

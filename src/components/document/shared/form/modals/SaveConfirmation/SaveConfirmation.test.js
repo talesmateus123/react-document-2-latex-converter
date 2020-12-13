@@ -7,7 +7,7 @@ describe('SaveConfirmation tests', () => {
 
     it('renders without crash', () => {
         const div = document.createElement('div')
-        ReactDOM.render(<SaveConfirmation id={0} setLoadDocuments={() => false} showModal={true} setShowModal={() => false} />, div);
+        ReactDOM.render(<SaveConfirmation showModal={true} setShowModal={() => false} />, div);
         unmountComponentAtNode(div)
     }); 
 
