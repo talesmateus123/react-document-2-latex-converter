@@ -9,10 +9,17 @@ import ElementosPreTextuais from './ElementosPreTextuais/ElementosPreTextuais'
 import ElementosTextuais from './ElementosTextuais/ElementosTextuais'
 import ElementosPosTextuais from './ElementosPosTextuais/ElementosPosTextuais'
 import Exports from './Exports/Exports'
+import SaveConfirmationModal from './modals/SaveConfirmation/SaveConfirmation'
 
 function MainForm(props) {
 
   const [ isExportTabActivated, setExportTabActivated ] = useState(false)
+  const [ showModal, setShowModal ] = useState(false)
+
+  const save = () => {
+    props.save()
+    setShowModal(true)
+  }
   return (
     <div>
       {
@@ -86,13 +93,17 @@ function MainForm(props) {
                 Voltar
               </Button>
               &nbsp;
-              <Button variant="success" onClick={props.save}>
+              <Button variant="success" onClick={() => save()}>
                 Salvar
               </Button>
             </Col>
           </Row>
         </div>
       }
+      <SaveConfirmationModal 
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </div>
   )
 }
