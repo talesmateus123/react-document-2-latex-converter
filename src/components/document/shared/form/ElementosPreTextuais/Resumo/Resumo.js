@@ -24,8 +24,8 @@ function Resumo(props) {
     }
     
     const handleRemovePalavraChaveResumo = id => {
-        const palavrasChaveResumo = props.document.palavrasChaveResumo.filter((palavraChave) => palavraChave.id !== id)
-        props.setDocument({ ...props.document, palavrasChaveResumo: palavrasChaveResumo })
+        const palavrasChaveResumo = props.document.palavrasChaveResumo.filter(palavraChave => palavraChave.id !== id)
+        props.setDocument({ ...props.document, palavrasChaveResumo })
     }
     
     const handleSetPalavraChaveResumo = palavraChaveToBeSetted => {
@@ -34,7 +34,7 @@ function Resumo(props) {
                 return palavraChaveToBeSetted
             return palavraChave
         })
-        props.setDocument({ ...props.document, palavrasChaveResumo: palavrasChaveResumo })
+        props.setDocument({ ...props.document, palavrasChaveResumo })
     }
     
     const getFormControlPalavrasChaveResumo = () => {
@@ -65,8 +65,8 @@ function Resumo(props) {
     }
     
     const handleRemovePalavraChaveAbstract = id => {
-        const palavrasChaveAbstractX = props.document.palavrasChaveAbstractX.filter((palavraChave) => palavraChave.id !== id)
-        props.setDocument({ ...props.document, palavrasChaveAbstractX: palavrasChaveAbstractX })
+        const palavrasChaveAbstractX = props.document.palavrasChaveAbstractX.filter(palavraChave => palavraChave.id !== id)
+        props.setDocument({ ...props.document, palavrasChaveAbstractX })
     }
     
     const handleSetPalavraChaveAbstract = palavraChaveToBeSetted => {
@@ -75,7 +75,7 @@ function Resumo(props) {
                 return palavraChaveToBeSetted
             return palavraChave
         })
-        props.setDocument({ ...props.document, palavrasChaveAbstractX: palavrasChaveAbstractX })
+        props.setDocument({ ...props.document, palavrasChaveAbstractX })
     }
     
     const getFormControlPalavrasChaveAbstract = () => {

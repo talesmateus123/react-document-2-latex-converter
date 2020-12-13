@@ -2,14 +2,14 @@ import React from 'react'
 import { unmountComponentAtNode } from 'react-dom'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import ElementosPreTextuais from './ElementosPreTextuais'
+import Others from './Others'
 import MockDocument from '../../mocks/mock.document'
 import MockFunction from '../../mocks/mock.function'
 
-describe('ElementosPreTextuais', () => {
+describe('Others', () => {
     it('renders without crash', () => {
         const div = document.createElement('div')
-        render(<ElementosPreTextuais
+        render(<Others
             document={MockDocument()}
             setDocument={MockFunction}
             validated={false}

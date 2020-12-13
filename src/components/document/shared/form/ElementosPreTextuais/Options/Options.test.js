@@ -8,7 +8,6 @@ import MockFunction from '../../mocks/mock.function'
 
 describe('Options', () => {
     it('renders without crash', () => {
-        //console.log(document)
         const div = document.createElement('div')
         render(<Options
             document={MockDocument()}

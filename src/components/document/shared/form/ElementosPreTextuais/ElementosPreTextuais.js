@@ -6,19 +6,10 @@ import { Tabs, Tab } from 'react-bootstrap'
 
 import Options from './Options/Options'
 import Resumo from './Resumo/Resumo'
+import Listas from './Listas/Listas'
+import Others from './Others/Others'
 
 function ElementosPreTextuais(props) {
-
-  /*
-    TODO: Is missing implementation of:
-    agradecimentos
-    dedicatoria
-    epigrafe
-    fichaCatalograficaPalavrasChave
-    preAmbulo
-    listaSiglas
-    listaSimbolos
-  */
 
   return (
     <div>
@@ -27,19 +18,31 @@ function ElementosPreTextuais(props) {
         id="elementos-pre-textuais-tabs"
       >
         <Tab eventKey="resumo" title="Resumo">
+          <br/>
           <Resumo
             document={props.document}
             setDocument={props.setDocument}
             validated={props.validated}
             setValidated={props.setValidated}
           />
-          <br/>
         </Tab>
         <Tab eventKey="lists" title="Listas">
           <br/>
+          <Listas
+            document={props.document}
+            setDocument={props.setDocument}
+            validated={props.validated}
+            setValidated={props.setValidated}
+          />
         </Tab>
         <Tab eventKey="others" title="Outros">
           <br/>
+          <Others
+            document={props.document}
+            setDocument={props.setDocument}
+            validated={props.validated}
+            setValidated={props.setValidated}
+          />
         </Tab>
         <Tab eventKey="options" title="Opções">
           <br/>

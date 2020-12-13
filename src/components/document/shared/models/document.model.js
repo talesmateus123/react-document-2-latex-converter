@@ -71,7 +71,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
         agradecimentos: agradecimentos,
         dedicatoria: dedicatoria,
         epigrafe: epigrafe,
-        fichaCatalograficaPalavrasChave: fichaCatalograficaPalavrasChave,
+        fichaCatalograficaPalavrasChave: fichaCatalograficaPalavrasChave ? fichaCatalograficaPalavrasChave : [],
         preAmbulo: preAmbulo,
         textoResumo: textoResumo,
         palavrasChaveResumo: palavrasChaveResumo ? palavrasChaveResumo : [],
