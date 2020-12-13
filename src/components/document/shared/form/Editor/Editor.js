@@ -21,11 +21,10 @@ function Editor(props) {
     if(props.chapters && props.chapters.length >= 1) {
       return (
         props.chapters.map((chapter, index) => (
-          <span>
+          <span key={index}>
             <Button 
               variant={index === currentChapterIndex ? "dark" : "light"}
               className="btn-sm btn-block"
-              key={index}
               onClick={() => handleChangeChapter(chapter.id)}
               onDoubleClick={() => setShowEditNameModal(true)}
             >
