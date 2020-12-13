@@ -4,21 +4,18 @@ import './ElementosPreTextuais.css'
 import PropTypes from 'prop-types'
 import { Tabs, Tab } from 'react-bootstrap'
 
-import Options from './Options'
+import Options from './Options/Options'
+import Resumo from './Resumo/Resumo'
 
 function ElementosPreTextuais(props) {
 
   /*
     TODO: Is missing implementation of:
-    textoAbstractX
-    palavrasChaveAbstractX
     agradecimentos
     dedicatoria
     epigrafe
     fichaCatalograficaPalavrasChave
     preAmbulo
-    textoResumo
-    palavrasChaveResumo
     listaSiglas
     listaSimbolos
   */
@@ -26,10 +23,16 @@ function ElementosPreTextuais(props) {
   return (
     <div>
       <Tabs 
-        defaultActiveKey="options" 
+        defaultActiveKey="resumo" 
         id="elementos-pre-textuais-tabs"
       >
         <Tab eventKey="resumo" title="Resumo">
+          <Resumo
+            document={props.document}
+            setDocument={props.setDocument}
+            validated={props.validated}
+            setValidated={props.setValidated}
+          />
           <br/>
         </Tab>
         <Tab eventKey="lists" title="Listas">

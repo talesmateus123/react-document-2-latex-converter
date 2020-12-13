@@ -1,5 +1,5 @@
 import React from 'react'
-import './ElementosPreTextuais.css'
+import './Options.css'
 
 import PropTypes from 'prop-types'
 import { Form as F, Col } from 'react-bootstrap'
@@ -53,7 +53,6 @@ function ElementosPreTextuais(props) {
             noValidate
             onSubmit={props.save}
         >
-            <h1>{props.document.enabledAgradecimentos}</h1>
             <F.Row>
             <Col >
                 <F.Group>
