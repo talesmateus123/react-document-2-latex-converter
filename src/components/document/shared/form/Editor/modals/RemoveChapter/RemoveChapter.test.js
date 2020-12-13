@@ -7,7 +7,11 @@ describe('RemoveChapter tests', () => {
     
     it('renders without crash', () => {
         const div = document.createElement('div')
-        ReactDOM.render(<RemoveChapter id={0} handleDeleteChapter={() => false} showModal={true} setShowModal={() => false} />, div);
+        ReactDOM.render(<RemoveChapter 
+            id={0} 
+            handleRemoveChapter={() => false} 
+            showModal={true} 
+            setShowModal={() => false} />, div);
         unmountComponentAtNode(div)
     }); 
 
