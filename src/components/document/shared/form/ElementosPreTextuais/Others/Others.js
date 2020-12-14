@@ -50,7 +50,7 @@ function Others(props) {
         if(props.document.fichaCatalograficaPalavrasChave && props.document.fichaCatalograficaPalavrasChave.length > 0) {
 
             return props.document.fichaCatalograficaPalavrasChave.map((fichaCatalograficaPalavraChave, index) => (
-                <InputGroup className="mb-3" key={fichaCatalograficaPalavraChave.id}>
+                <InputGroup className="mb-3" key={fichaCatalograficaPalavraChave}>
                     <F.Control 
                         placeholder={`Palavra-chave ${index+1}`}
                         value={fichaCatalograficaPalavraChave.text || ''}
@@ -76,7 +76,7 @@ function Others(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Agradecimentos</F.Label>
+                        <F.Label>Agradecimentos</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}
@@ -90,7 +90,7 @@ function Others(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Dedicatória</F.Label>
+                        <F.Label>Dedicatória</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}
@@ -104,7 +104,7 @@ function Others(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Epígrafe</F.Label>
+                        <F.Label>Epígrafe</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}
@@ -118,7 +118,7 @@ function Others(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Preâmbulo</F.Label>
+                        <F.Label>Preâmbulo</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}

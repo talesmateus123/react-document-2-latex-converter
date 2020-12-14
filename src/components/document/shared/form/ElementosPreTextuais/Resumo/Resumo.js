@@ -41,7 +41,7 @@ function Resumo(props) {
         if(props.document.palavrasChaveResumo && props.document.palavrasChaveResumo.length > 0) {
 
             return props.document.palavrasChaveResumo.map((palavraChaveResumo, index) => (
-                <InputGroup className="mb-3" key={palavraChaveResumo.id}>
+                <InputGroup className="mb-3" key={palavraChaveResumo}>
                     <F.Control 
                         placeholder={`Palavra-chave ${index+1}`}
                         value={palavraChaveResumo.text || ''}
@@ -80,15 +80,15 @@ function Resumo(props) {
     
     const getFormControlPalavrasChaveAbstract = () => {
         if(props.document.palavrasChaveAbstractX && props.document.palavrasChaveAbstractX.length > 0) {
-            return props.document.palavrasChaveAbstractX.map((palavraChaveResumo, index) => (
-                <InputGroup className="mb-3" key={palavraChaveResumo.id}>
+            return props.document.palavrasChaveAbstractX.map((palavraChaveAbstract, index) => (
+                <InputGroup className="mb-3" key={palavraChaveAbstract}>
                     <F.Control 
                         placeholder={`Palavra-chave ${index+1}`}
-                        value={palavraChaveResumo.text || ''}
-                        onChange={event => handleSetPalavraChaveAbstract({id: palavraChaveResumo.id, text: event.target.value})}
+                        value={palavraChaveAbstract.text || ''}
+                        onChange={event => handleSetPalavraChaveAbstract({id: palavraChaveAbstract.id, text: event.target.value})}
                     />
                     <InputGroup.Prepend>
-                        <Button onClick={() => handleRemovePalavraChaveAbstract(palavraChaveResumo.id)} variant="danger">
+                        <Button onClick={() => handleRemovePalavraChaveAbstract(palavraChaveAbstract.id)} variant="danger">
                             <FontAwesomeIcon icon={faMinus} /> &nbsp; Remover
                         </Button>
                     </InputGroup.Prepend>
@@ -107,7 +107,7 @@ function Resumo(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Resumo</F.Label>
+                        <F.Label>Resumo</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}
@@ -121,13 +121,13 @@ function Resumo(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>
-                        Palavras-chave
-                        &nbsp;
-                        <Button onClick={() => handleNewPalavraChaveResumo()} variant="outline-success" size="sm">
-                            <FontAwesomeIcon icon={faPlus} />
-                        </Button>
-                    </F.Label>
+                        <F.Label>
+                            Palavras-chave
+                            &nbsp;
+                            <Button onClick={() => handleNewPalavraChaveResumo()} variant="outline-success" size="sm">
+                                <FontAwesomeIcon icon={faPlus} />
+                            </Button>
+                        </F.Label>
                         { getFormControlPalavrasChaveResumo() }
                     </F.Group>
                 </Col>
@@ -136,7 +136,7 @@ function Resumo(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>Resumo (em inglês)</F.Label>
+                        <F.Label>Resumo (em inglês)</F.Label>
                         <F.Control 
                             as="textarea" 
                             rows={FORM_ROWS}
@@ -150,13 +150,13 @@ function Resumo(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>
-                        Palavras-chave (em inglês)
-                        &nbsp;
-                        <Button onClick={() => handleNewPalavraChaveAbstract()} variant="outline-success" size="sm">
-                            <FontAwesomeIcon icon={faPlus} />
-                        </Button>
-                    </F.Label>
+                        <F.Label>
+                            Palavras-chave (em inglês)
+                            &nbsp;
+                            <Button onClick={() => handleNewPalavraChaveAbstract()} variant="outline-success" size="sm">
+                                <FontAwesomeIcon icon={faPlus} />
+                            </Button>
+                        </F.Label>
                         { getFormControlPalavrasChaveAbstract() }
                     </F.Group>
                 </Col>

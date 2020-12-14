@@ -1,7 +1,7 @@
 import Document from '../models/document.model'
 import Capitulo from '../models/capitulo.model'
 
-function MockDocument() {
+function MockDocument(id) {
     const palavrasChaveAbstractX = ['keyword 1', 'keyword 2', 'keyword 3']
     const fichaCatalograficaPalavrasChave = ['palavra-chave 1', 'palavra-chave 2', 'palavra-chave 3']
     const palavrasChaveResumo = ['palavra-chave 1', 'palavra-chave 2', 'palavra-chave 3']
@@ -27,7 +27,7 @@ function MockDocument() {
     ]
 
     const documentModel = new Document(
-        new Date().getTime(), 'titulo', 'subTitulo', 'title', 'nomeAutor', 'nomeCidade', 2020, null,  'tipoTrabalho','tituloAcademico', 'areaConcentracao', 'linhaPesquisa', 'nomeInstituicao', 'siglaInstituicao', 'campusInstituicao', 'departamentoInstituicao','nomeCurso', 'nivelEscolarCurso', 'nomeOrientador', 'nomeCoorientador', 'textoAbstractX', palavrasChaveAbstractX, 'agradecimentos', 'dedicatoria', 'epigrafe', fichaCatalograficaPalavrasChave, 'preAmbulo', 'textoResumo', palavrasChaveResumo, listaSiglas, listaSimbolos, 'enabledAgradecimentos', 'enabledDedicatoria', 'enabledEpigrafe', 'enabledFichaCatalografica', 'enabledListaSiglas', 'enabledListaSimbolos', 'enabledListaTabelas', 'enabledListaAlgoritmos', 'enabledListaFiguras', 'enabledListaQuadros', capitulos, apendices, anexos)
+        id ? id : new Date().getTime(), 'titulo', 'subTitulo', 'title', 'nomeAutor', 'nomeCidade', 2020, null,  'tipoTrabalho','tituloAcademico', 'areaConcentracao', 'linhaPesquisa', 'nomeInstituicao', 'siglaInstituicao', 'campusInstituicao', 'departamentoInstituicao','nomeCurso', 'nivelEscolarCurso', 'nomeOrientador', 'nomeCoorientador', 'textoAbstractX', palavrasChaveAbstractX, 'agradecimentos', 'dedicatoria', 'epigrafe', fichaCatalograficaPalavrasChave, 'preAmbulo', 'textoResumo', palavrasChaveResumo, listaSiglas, listaSimbolos, 'enabledAgradecimentos', 'enabledDedicatoria', 'enabledEpigrafe', 'enabledFichaCatalografica', 'enabledListaSiglas', 'enabledListaSimbolos', 'enabledListaTabelas', 'enabledListaAlgoritmos', 'enabledListaFiguras', 'enabledListaQuadros', capitulos, apendices, anexos)
     
     return documentModel
 }

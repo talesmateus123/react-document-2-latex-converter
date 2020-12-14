@@ -32,7 +32,7 @@ function Listas(props) {
         if(props.document.listaSiglas && props.document.listaSiglas.length > 0) {
 
             return props.document.listaSiglas.map(sigla => (
-                <InputGroup className="mb-3" key={sigla.id}>
+                <InputGroup className="mb-3" key={sigla}>
                     <F.Control 
                         placeholder="ABNT"
                         value={sigla.item || ''}
@@ -80,7 +80,7 @@ function Listas(props) {
         if(props.document.listaSimbolos && props.document.listaSimbolos.length > 0) {
 
             return props.document.listaSimbolos.map(simbolo => (
-                <InputGroup className="mb-3" key={simbolo.id}>
+                <InputGroup className="mb-3" key={simbolo}>
                     <F.Control 
                         placeholder=" "
                         value={simbolo.item || ''}

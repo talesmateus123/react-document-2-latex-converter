@@ -51,7 +51,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
         subTitulo: subTitulo,
         title: title,
         nomeAutor: nomeAutor,
-        nomeCidade: nomeCidade,
+        nomeCidade: nomeCidade ? nomeCidade : 'Corumbá',
         ano: ano ? ano : new Date().getFullYear(),
         dataAprovacao: dataAprovacao,
         tipoTrabalho: tipoTrabalho ? tipoTrabalho : 'TCC',

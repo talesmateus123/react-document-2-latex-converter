@@ -43,7 +43,7 @@ function EditChapterNameModal(props) {
           <Form onSubmit={event => event.preventDefault()}>
             <Form.Label>Título</Form.Label>
             <Form.Control 
-              value={title}
+              value={title || ''}
               onChange={event => setTitle(event.target.value)}
               onKeyDown={listenEnterKeyAndSend}
             />
