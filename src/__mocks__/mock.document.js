@@ -1,5 +1,5 @@
-import Document from '../models/document.model'
-import Capitulo from '../models/capitulo.model'
+import Document from '../components/document/shared/models/document.model'
+import Capitulo from '../components/document/shared/models/capitulo.model'
 
 function MockDocument(id) {
     const palavrasChaveAbstractX = ['keyword 1', 'keyword 2', 'keyword 3']

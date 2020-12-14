@@ -3,7 +3,7 @@ import { unmountComponentAtNode } from 'react-dom'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import Exports from './Exports'
-import MockDocument from '../../mocks/mock.document'
+import MockDocument from 'mock.document'
 
 describe('Exports', () => {
     it('renders without crash', () => {

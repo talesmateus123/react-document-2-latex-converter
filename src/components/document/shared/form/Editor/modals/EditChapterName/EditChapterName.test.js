@@ -3,7 +3,7 @@ import ReactDOM, { unmountComponentAtNode } from 'react-dom'
 import EditChapterName from './EditChapterName'
 import '@testing-library/jest-dom/extend-expect'
 
-import MockFunction from '../../../../mocks/mock.function'
+import MockFunction from 'mock.function'
 describe('EditChapterName tests', () => {
 
     it('renders without crash', () => {

@@ -4,7 +4,7 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import Editor from './Editor'
-import MockFunction from '../../mocks/mock.function'
+import MockFunction from 'mock.function'
 
 describe('Editor', () => {
     it('renders without crash', () => {

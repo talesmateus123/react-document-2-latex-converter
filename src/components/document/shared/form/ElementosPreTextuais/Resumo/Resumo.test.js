@@ -3,8 +3,8 @@ import { unmountComponentAtNode } from 'react-dom'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import Resumo from './Resumo'
-import MockDocument from '../../../mocks/mock.document'
-import MockFunction from '../../../mocks/mock.function'
+import MockDocument from 'mock.document'
+import MockFunction from 'mock.function'
 
 describe('Resumo', () => {
     it('renders without crash', () => {

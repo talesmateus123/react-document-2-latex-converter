@@ -4,7 +4,7 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import Info from './Info'
-import MockDocument from '../shared/mocks/mock.document'
+import MockDocument from 'mock.document'
 import DocumentStorageService from '../shared/services/document-storage.service'
 
 describe('Info', () => {
