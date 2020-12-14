@@ -9,7 +9,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 function Listas(props) {
 
     const handleNewSigla = () => {
-        const sigla = { id: new Date().getTime(), text: ''}
+        const sigla = { id: new Date().getTime(), item: '', text: ''}
         props.document.listaSiglas.push(sigla)
         props.setDocument({ ...props.document, listaSiglas: props.document.listaSiglas })
     }
@@ -31,12 +31,17 @@ function Listas(props) {
     const getFormControlSiglas = () => {
         if(props.document.listaSiglas && props.document.listaSiglas.length > 0) {
 
-            return props.document.listaSiglas.map((sigla, index) => (
+            return props.document.listaSiglas.map(sigla => (
                 <InputGroup className="mb-3" key={sigla.id}>
                     <F.Control 
-                        placeholder={`${index+1}ª sigla`}
+                        placeholder="ABNT"
+                        value={sigla.item || ''}
+                        onChange={event => handleSetSigla({ ...sigla, item: event.target.value})}
+                    />
+                    <F.Control 
+                        placeholder="Associação Brasileira de Normas Técnicas"
                         value={sigla.text || ''}
-                        onChange={event => handleSetSigla({id: sigla.id, text: event.target.value})}
+                        onChange={event => handleSetSigla({ ...sigla, text: event.target.value})}
                     />
                     <InputGroup.Prepend>
                         <Button onClick={() => handleRemoveSigla(sigla.id)} variant="danger">
@@ -74,12 +79,17 @@ function Listas(props) {
     const getFormControlSimbolos = () => {
         if(props.document.listaSimbolos && props.document.listaSimbolos.length > 0) {
 
-            return props.document.listaSimbolos.map((simbolo, index) => (
+            return props.document.listaSimbolos.map(simbolo => (
                 <InputGroup className="mb-3" key={simbolo.id}>
                     <F.Control 
-                        placeholder={`${index+1}º símbolo`}
+                        placeholder=" "
+                        value={simbolo.item || ''}
+                        onChange={event => handleSetSimbolo({ ...simbolo, item: event.target.value})}
+                    />
+                    <F.Control 
+                        placeholder="Letra grega Gama"
                         value={simbolo.text || ''}
-                        onChange={event => handleSetSimbolo({id: simbolo.id, text: event.target.value})}
+                        onChange={event => handleSetSimbolo({ ...simbolo, text: event.target.value})}
                     />
                     <InputGroup.Prepend>
                         <Button onClick={() => handleRemoveSimbolo(simbolo.id)} variant="danger">
@@ -117,7 +127,7 @@ function Listas(props) {
                 <Col>
                     <F.Group>
                     <F.Label>
-                        Lista de símbolo
+                        Lista de símbolos
                         &nbsp;
                         <Button onClick={() => handleNewSimbolo()} variant="outline-success" size="sm">
                             <FontAwesomeIcon icon={faPlus} />

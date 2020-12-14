@@ -132,13 +132,13 @@ function Others(props) {
             <F.Row>
                 <Col>
                     <F.Group>
-                    <F.Label>
-                        Palavras-chave da ficha catalográfica
-                        &nbsp;
-                        <Button onClick={() => handleNewFichaCatalograficaPalavraChave()} variant="outline-success" size="sm">
-                            <FontAwesomeIcon icon={faPlus} />
-                        </Button>
-                    </F.Label>
+                        <F.Label>
+                            Palavras-chave da ficha catalográfica
+                            &nbsp;
+                            <Button onClick={() => handleNewFichaCatalograficaPalavraChave()} variant="outline-success" size="sm">
+                                <FontAwesomeIcon icon={faPlus} />
+                            </Button>
+                        </F.Label>
                         { getFormControlfichaCatalograficaPalavrasChave() }
                     </F.Group>
                 </Col>
