@@ -12,7 +12,7 @@ function RemoveDocumentModal(props) {
   const handleCloseModal = () => {
     props.setShowModal(false)
   }
-  const handleRemoveTask = event => {
+  const handleRemoveTask = () => {
     const documents = getDocumentsStorage().filter(document => document.id !== props.id)
     setDocumentsStorage(documents)
     props.setLoadDocuments(true)
