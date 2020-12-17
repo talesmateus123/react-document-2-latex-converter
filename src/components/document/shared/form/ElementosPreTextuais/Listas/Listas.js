@@ -5,11 +5,12 @@ import PropTypes from 'prop-types'
 import { Form as F, Col, Button, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { v4 as generateUniqueId } from 'uuid'
 
 function Listas(props) {
 
     const handleNewSigla = () => {
-        const sigla = { id: new Date().getTime(), item: '', text: ''}
+        const sigla = { id: new generateUniqueId(), item: '', text: ''}
         props.document.listaSiglas.push(sigla)
         props.setDocument({ ...props.document, listaSiglas: props.document.listaSiglas })
     }
@@ -53,11 +54,9 @@ function Listas(props) {
         }
         return <p>Nenhuma sigla adicionada</p>
     }
-
-
     
     const handleNewSimbolo = () => {
-        const simbolo = { id: new Date().getTime(), text: ''}
+        const simbolo = { id: generateUniqueId(), text: ''}
         props.document.listaSimbolos.push(simbolo)
         props.setDocument({ ...props.document, listaSimbolos: props.document.listaSimbolos })
     }

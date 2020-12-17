@@ -8,7 +8,7 @@ import InfoDocuments from '../document/info/Info'
 const routes = {
   '/': () => <ListDocuments />,
   '/new': () => <NewDocuments />,
-  '/info/:id': ({id}) => <InfoDocuments id={parseInt(id)} />
+  '/info/:id': ({id}) => <InfoDocuments id={id} />
 }
 
 function Router() {

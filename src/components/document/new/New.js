@@ -6,12 +6,13 @@ import { navigate } from 'hookrouter'
 import DocumentStorageService from '../shared/services/document-storage.service'
 import MainForm from '../shared/form/MainForm'
 import Document from '../shared/models/document.model'
+import { v4 as generateUniqueId } from 'uuid'
 
 function New() {
 
   const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
-  const [ document, setDocument ] = useState(new Document())
+  const [ document, setDocument ] = useState(new Document(generateUniqueId()))
   const [ validated, setValidated ] = useState(false)
 
   const save = () => {

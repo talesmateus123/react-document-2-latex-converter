@@ -6,6 +6,7 @@ import { Form as F, Col, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { v4 as generateUniqueId } from 'uuid'
 
 import Capitulo from '../../models/capitulo.model'
 import RemoveChapterModal from './modals/RemoveChapter/RemoveChapter'
@@ -39,7 +40,7 @@ function Editor(props) {
 
   const handleNewChapter = () => {
     const chapNumber = props.chapters.length + 1
-    const chapter = new Capitulo(null, `Capítulo ${chapNumber}`)
+    const chapter = new Capitulo(generateUniqueId(), `Capítulo ${chapNumber}`)
     props.chapters.push(chapter)
     props.setChapters(props.chapters)
     currentChapterIndex === null && setCurrentChapterIndex(props.chapters.indexOf(chapter))

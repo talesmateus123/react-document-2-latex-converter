@@ -2,19 +2,19 @@ import React from 'react'
 import { unmountComponentAtNode } from 'react-dom'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
+import { v4 as generateUniqueId } from 'uuid'
 
-import Editor from './Editor'
-import MockDocument from 'mock.document'
+import ChapterButton from './ChapterButton'
 import MockFunction from 'mock.function'
 
-describe('Editor', () => {
+describe('ChapterButton', () => {
     it('renders without crash', () => {
         const div = document.createElement('div')
-        render(<Editor
-            chapters={[MockDocument()]}
-            setChapters={MockFunction}
-            validated={false}
-            setValidated={MockFunction} />, div)
+        render(<ChapterButton
+            active={true}
+            key={generateUniqueId()}
+            onClick={MockFunction}
+            onDoubleClick={MockFunction} />, div)
         unmountComponentAtNode(div)
     });
 })

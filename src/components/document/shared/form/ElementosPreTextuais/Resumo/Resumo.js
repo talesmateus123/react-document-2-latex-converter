@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { Form as F, Col, Button, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { v4 as generateUniqueId } from 'uuid'
 
 function Resumo(props) {
     const FORM_ROWS = 5
@@ -18,7 +19,7 @@ function Resumo(props) {
     }
 
     const handleNewPalavraChaveResumo = () => {
-        const palavraChave = { id: new Date().getTime(), text: ''}
+        const palavraChave = { id: generateUniqueId(), text: ''}
         props.document.palavrasChaveResumo.push(palavraChave)
         props.setDocument({ ...props.document, palavrasChaveResumo: props.document.palavrasChaveResumo })
     }
@@ -59,7 +60,7 @@ function Resumo(props) {
     }
 
     const handleNewPalavraChaveAbstract = () => {
-        const palavraChave = { id: new Date().getTime(), text: ''}
+        const palavraChave = { id: generateUniqueId(), text: ''}
         props.document.palavrasChaveAbstractX.push(palavraChave)
         props.setDocument({ ...props.document, palavrasChaveAbstractX: props.document.palavrasChaveAbstractX })
     }

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { Form as F, Col, Button, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { v4 as generateUniqueId } from 'uuid'
 
 function Others(props) {
 
@@ -27,7 +28,7 @@ function Others(props) {
     }
 
     const handleNewFichaCatalograficaPalavraChave = () => {
-        const palavraChave = { id: new Date().getTime(), text: ''}
+        const palavraChave = { id: generateUniqueId(), text: ''}
         props.document.fichaCatalograficaPalavrasChave.push(palavraChave)
         props.setDocument({ ...props.document, fichaCatalograficaPalavrasChave: props.document.fichaCatalograficaPalavrasChave })
     }

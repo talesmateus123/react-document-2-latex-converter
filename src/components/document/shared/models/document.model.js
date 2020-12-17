@@ -46,7 +46,7 @@ function Document(id, titulo, subTitulo, title, nomeAutor, nomeCidade, ano, data
     this.anexos = anexos
     
     return {
-        id: id ? id : new Date().getTime(),
+        id: id,
         titulo: titulo,
         subTitulo: subTitulo,
         title: title,
