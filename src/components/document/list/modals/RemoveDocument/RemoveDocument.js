@@ -51,7 +51,7 @@ function RemoveDocumentModal(props) {
 }
 
 RemoveDocumentModal.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   setLoadDocuments: PropTypes.func.isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired

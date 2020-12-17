@@ -12,7 +12,6 @@ describe('ChapterButton', () => {
         const div = document.createElement('div')
         render(<ChapterButton
             active={true}
-            key={generateUniqueId()}
             onClick={MockFunction}
             onDoubleClick={MockFunction} />, div)
         unmountComponentAtNode(div)

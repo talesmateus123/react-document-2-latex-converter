@@ -10,7 +10,7 @@ import DocumentStorageService from '../shared/services/document-storage.service'
 describe('Info', () => {
 
     const [ _, setDocumentsStorage ] = DocumentStorageService()
-    const documentId = 1
+    const documentId = '1'
 
     beforeEach(() => {
         setDocumentsStorage([MockDocument(documentId)])

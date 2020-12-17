@@ -10,7 +10,7 @@ describe('ExportConfirmation tests', () => {
     it('renders without crash', () => {
         const div = document.createElement('div')
         ReactDOM.render(<ExportConfirmation 
-            status={{}}
+            status={null}
             setStatus={MockFunction}
             showModal={true}
             setShowModal={MockFunction} />, div);

@@ -6,7 +6,7 @@ import List from './List'
 
 describe('List', () => {
 
-    const documentId = 1;
+    const documentId = '1';
     const documentModel = new Document(documentId, 'Titulo')
 
     beforeEach(() => {

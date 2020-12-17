@@ -7,7 +7,7 @@ describe('RemoveDocument tests', () => {
 
     it('renders without crash', () => {
         const div = document.createElement('div')
-        ReactDOM.render(<RemoveDocument id={0} setLoadDocuments={() => false} showModal={true} setShowModal={() => false} />, div);
+        ReactDOM.render(<RemoveDocument id={'1'} setLoadDocuments={() => false} showModal={true} setShowModal={() => false} />, div);
         unmountComponentAtNode(div)
     }); 
 

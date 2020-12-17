@@ -16,7 +16,7 @@ function List() {
   const [ documents, setDocuments ] = useState([])
   const [ loadDocuments, setLoadDocuments ] = useState(true)
   const [ filter, setFilter ] = useState('')
-  const [ currentId, setCurrentId ] = useState(0)
+  const [ currentId, setCurrentId ] = useState(null)
   const [ showModal, setShowModal ] = useState(false)
 
   useEffect(() => {
