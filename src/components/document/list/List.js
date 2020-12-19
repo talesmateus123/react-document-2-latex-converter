@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './List.css'
 
-import { A, navigate } from 'hookrouter'
+import { navigate } from 'hookrouter'
 import { Form, Button, Table, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -62,28 +62,27 @@ function List() {
     <div>
       <h3 className="header">Meus documentos</h3>
       <Row>
-        <Col sm={10}>
-          <Form>
-            <Form.Control value={filter} placeholder="Pesquisar" onChange={handleFilter} data-testid="form-control-filter"/>
-          </Form>
+        <Col sm={9}>
+          <Form.Control value={filter} placeholder="Pesquisar" onChange={handleFilter} data-testid="form-control-filter"/>
         </Col>
-        <Col sm={2} className="text-right">
-          <A 
-            href="/new" 
-            className="btn btn-success btn-sm" 
-            style={{width: '100%', height: '100%'}}
+        <Col sm={3} className="text-right">
+          <Button
+            variant="success"
+            className="btn-sm" 
+            style={{height: '38px', width: '100%'}}
             data-testid="btn-new"
+            onClick={() => navigate('/new')}
           >
             <FontAwesomeIcon icon={faPlus} />
             &nbsp;
-            New task
-          </A>
+            Novo documento
+          </Button>
         </Col>
       </Row>
 
       <Row style={{paddingTop: 10}}>
         <Table
-          striped bordered hover responsive data-testid="table"
+          striped hover responsive data-testid="table"
         >
           <thead>
             <tr>

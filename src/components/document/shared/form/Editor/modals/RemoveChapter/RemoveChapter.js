@@ -32,11 +32,11 @@ function RemoveChapterModal(props) {
           Tem certeza que deseja excluir o capítulo?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleRemoveChapter} data-testid="btn-remove-chapter">
-            Sim
-          </Button>
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
             Não
+          </Button>
+          <Button variant="danger" onClick={handleRemoveChapter} data-testid="btn-remove-chapter">
+            Sim
           </Button>
         </Modal.Footer>
       </Modal>

@@ -62,7 +62,7 @@ function ExportConfirmationModal(props) {
         { getBody() }
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
+        <Button onClick={handleCloseModal} data-testid="btn-close-modal">
           Ok
         </Button>
       </Modal.Footer>

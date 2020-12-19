@@ -18,8 +18,7 @@ function ElementosPosTextuais(props) {
 
   return (
     <Tabs defaultActiveKey="apendices" id="main-form-tabs">
-      <Tab eventKey="apendices" title="Apêncices">
-        <br/>
+      <Tab eventKey="apendices" title="Apêndices" className="tab">
         <Editor
           chapters={props.document.apendices}
           setChapters={setApendices}
@@ -27,8 +26,7 @@ function ElementosPosTextuais(props) {
           setValidated={props.setValidated}
         />
       </Tab>
-      <Tab eventKey="anexos" title="Anexos">
-        <br/>
+      <Tab eventKey="anexos" title="Anexos" className="tab">
         <Editor
           chapters={props.document.anexos}
           setChapters={setAnexos}

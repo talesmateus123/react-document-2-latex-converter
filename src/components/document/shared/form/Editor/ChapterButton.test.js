@@ -2,7 +2,6 @@ import React from 'react'
 import { unmountComponentAtNode } from 'react-dom'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { v4 as generateUniqueId } from 'uuid'
 
 import ChapterButton from './ChapterButton'
 import MockFunction from 'mock.function'

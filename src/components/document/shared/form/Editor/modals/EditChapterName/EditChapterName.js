@@ -36,7 +36,7 @@ function EditChapterNameModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            Editar título
+            Renomear capítulo
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -50,11 +50,11 @@ function EditChapterNameModal(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleEditChapterName} data-testid="btn-edit-chapter-name">
-            Ok
-          </Button>
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
             Cancelar
+          </Button>
+          <Button variant="primary" onClick={handleEditChapterName} data-testid="btn-edit-chapter-name">
+            Ok
           </Button>
         </Modal.Footer>
       </Modal>

@@ -38,11 +38,11 @@ function RemoveDocumentModal(props) {
           Tem certeza que deseja excluir o documento?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleRemoveTask} data-testid="btn-remove-task">
-            Sim
-          </Button>
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
             Não
+          </Button>
+          <Button variant="danger" onClick={handleRemoveTask} data-testid="btn-remove-task">
+            Sim
           </Button>
         </Modal.Footer>
       </Modal>

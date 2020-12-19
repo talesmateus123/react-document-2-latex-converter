@@ -14,14 +14,13 @@ function ImportDocumentModal(props) {
   const handleImportDocument = () => {
     var reader = new FileReader()
     reader.readAsText(file, "UTF-8")
-    reader.onload = evt => {
-      JSON.parse(evt.target.result)
-      console.log({ ...JSON.parse(evt.target.result), id: generateUniqueId() })
-      props.setDocument({...JSON.parse(evt.target.result), id: generateUniqueId() })
+    reader.onload = event => {
+      props.setDocument({...JSON.parse(event.target.result), id: generateUniqueId() })
     }
-    reader.onerror = evt => {
+    reader.onerror = () => {
       alert('Ocorreu um erro ao ler o arquivo.')
     }
+    setFile(null)
     handleCloseModal()
   }
 
@@ -55,7 +54,7 @@ function ImportDocumentModal(props) {
           <Button variant="light" onClick={handleCloseModal} data-testid="btn-close-modal">
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleImportDocument} data-testid="btn-remove-task">
+          <Button disabled={!file} variant="primary" onClick={handleImportDocument} data-testid="btn-remove-task">
             Importar
           </Button>
         </Modal.Footer>

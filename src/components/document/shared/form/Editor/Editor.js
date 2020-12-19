@@ -24,12 +24,12 @@ function Editor(props) {
         props.chapters.map((chapter, index) => (
           <span key={index}>
             <Button 
-              variant={index === currentChapterIndex ? "dark" : "light"}
+              variant={index === currentChapterIndex ? "secondary" : "light"}
               className="btn-sm btn-block"
               onClick={() => handleChangeChapter(chapter.id)}
               onDoubleClick={() => setShowEditNameModal(true)}
             >
-              {chapter.titulo}
+              {index + 1 + ' - ' + chapter.titulo}
             </Button>
             <br/>
           </span>
@@ -68,6 +68,7 @@ function Editor(props) {
       setCurrentChapterIndex(props.chapters.indexOf(chapters[0]))
   }
 
+  // TODO: create a custem header
   const getEditor = () => {
     if(props.chapters) {
       return (
@@ -85,28 +86,42 @@ function Editor(props) {
         })
       )
     }
+    return (<p>Nenhum capítulo adicionado</p>)
   }
 
   return (
     <div>
       <F.Row>
         <Col md={4}>
-          <F.Row md={10} style={{overflowY: ' auto', maxHeight: '250px'}}>
-            {getButtonChapters()}
-          </F.Row>
           <F.Row md={2}>
-            <Button className="btn-sm" onClick={handleNewChapter}>
-              <FontAwesomeIcon icon={faPlus} /> &nbsp; Novo capítulo
-            </Button>
-            &nbsp;
-            <br/>
-            <Button className="btn-sm" onClick={() => setShowRemoveModal(true)}>
-              <FontAwesomeIcon icon={faMinus} /> &nbsp; Remover capítulo
-            </Button>
+            {
+              props.chapters && props.chapters.length >= 1 ?
+              <div style={{width: '100%'}} >
+                <Button style={{width: '49%'}} variant="info" className="btn-sm" onClick={handleNewChapter}>
+                  <FontAwesomeIcon icon={faPlus} /> &nbsp; Novo capítulo
+                </Button>
+                &nbsp;
+                <Button style={{width: '49%'}} variant="dark" className="btn-sm" onClick={() => setShowRemoveModal(true)}>
+                  <FontAwesomeIcon icon={faMinus} /> &nbsp; Remover capítulo
+                </Button>
+              </div>
+              :
+              <div style={{width: '100%'}} >
+                <Button style={{width: '100%'}} variant="info" className="btn-sm" onClick={handleNewChapter}>
+                  <FontAwesomeIcon icon={faPlus} /> &nbsp; Novo capítulo
+                </Button>
+              </div>
+            }
+          </F.Row>
+          <hr/>
+          <F.Row>
+            <div style={{width: '100%'}}>
+              {getButtonChapters()}
+            </div>
           </F.Row>
         </Col>
         <Col md={8}>
-          {getEditor()}
+            {getEditor()}
         </Col>
       </F.Row>
       {

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import './MainForm.css'
 
 import PropTypes from 'prop-types'
 import { navigate } from 'hookrouter'
 import { Tabs, Tab, Button, Row, Col } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faSave } from '@fortawesome/free-solid-svg-icons'
 
 import GeneralInfo from './GeneralInfo/GeneralInfo'
 import ElementosPreTextuais from './ElementosPreTextuais/ElementosPreTextuais'
@@ -20,11 +23,31 @@ function MainForm(props) {
     props.save()
     setShowModal(true)
   }
+
+  const getBackAndSaveButtons = () => (
+    <div>
+      <br/>
+      <Row>
+        <Col className="text-left">
+          <Button variant="light" onClick={() => navigate('/')}>
+            <FontAwesomeIcon icon={faAngleLeft} /> &nbsp;
+            Voltar
+          </Button>
+        </Col>
+        <Col className="text-right">
+          <Button variant="light" onClick={() => save()}>
+            <FontAwesomeIcon icon={faSave} /> &nbsp;
+            Salvar
+          </Button>
+        </Col>
+      </Row>
+    </div>
+  )
   
   return (
     <div>
       {
-        !props.isInfoForm ? 
+        !props.isInfoForm ?
         <GeneralInfo
           document={props.document}
           setDocument={props.setDocument}
@@ -32,15 +55,13 @@ function MainForm(props) {
           setValidated={props.setValidated}
         />
         :
-
         <div>
           <Tabs 
             defaultActiveKey="general-info" 
             id="main-form-tabs" 
             onSelect={key => key === 'exports' ? setExportTabActivated(true) : setExportTabActivated(false)}
           >
-            <Tab eventKey="general-info" title="Informações gerais">
-              <br/>
+            <Tab eventKey="general-info" title="Informações gerais" className="tab">
               <GeneralInfo
                 document={props.document}
                 setDocument={props.setDocument}
@@ -48,8 +69,7 @@ function MainForm(props) {
                 setValidated={props.setValidated}
               />
             </Tab>
-            <Tab eventKey="elementos-pre-textuais" title="Elementos pré-textuais">
-              <br/>
+            <Tab eventKey="elementos-pre-textuais" title="Elementos pré-textuais" className="tab">
               <ElementosPreTextuais
                 document={props.document}
                 setDocument={props.setDocument}
@@ -57,8 +77,7 @@ function MainForm(props) {
                 setValidated={props.setValidated}
               />
             </Tab>
-            <Tab eventKey="elementos-textuais" title="Elementos textuais">
-              <br/>
+            <Tab eventKey="elementos-textuais" title="Elementos textuais" className="tab">
               <ElementosTextuais
                 document={props.document}
                 setDocument={props.setDocument}
@@ -66,8 +85,7 @@ function MainForm(props) {
                 setValidated={props.setValidated}
               />
             </Tab>
-            <Tab eventKey="elementos-pos-textuais" title="Elementos pós-textuais">
-              <br/>
+            <Tab eventKey="elementos-pos-textuais" title="Elementos pós-textuais" className="tab">
               <ElementosPosTextuais
                 document={props.document}
                 setDocument={props.setDocument}
@@ -75,8 +93,7 @@ function MainForm(props) {
                 setValidated={props.setValidated}
               />
             </Tab>
-            <Tab eventKey="exports" title="Exportar">
-              <br/>
+            <Tab eventKey="exports" title="Exportar" className="tab">
               <Exports
                 document={props.document}
               />
@@ -86,20 +103,7 @@ function MainForm(props) {
       }
       {
         !isExportTabActivated &&
-        <div>
-          <br/>
-          <Row>
-            <Col className="text-center">
-              <Button variant="info" onClick={() => navigate('/')}>
-                Voltar
-              </Button>
-              &nbsp;
-              <Button variant="success" onClick={() => save()}>
-                Salvar
-              </Button>
-            </Col>
-          </Row>
-        </div>
+        getBackAndSaveButtons()
       }
       <SaveConfirmationModal 
         showModal={showModal}
