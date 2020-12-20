@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './New.css'
 
 import { navigate } from 'hookrouter'
@@ -14,13 +14,18 @@ function New() {
 
   const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
-  const [ document, setDocument ] = useState(new Document(generateUniqueId()))
+  const [ title ] = useState('Novo documento')
+  const [ documentX, setDocumentX ] = useState(new Document(generateUniqueId()))
   const [ validated, setValidated ] = useState(false)
   const [ showModal, setShowModal ] = useState(false)
 
+  useEffect(() => {
+    document.title = title
+  }, [ title ])
+
   const save = () => {
     const documents = getDocumentsStorage()
-    documents.push(document)
+    documents.push(documentX)
     setDocumentsStorage(documents)
     navigate('/')
   }
@@ -31,18 +36,18 @@ function New() {
 
   return (
     <div>
-      <h3 className="header">Novo documento &nbsp; <Button size="sm" variant="outline-dark" onClick={handleOpenModal}>Importar</Button></h3>
+      <h3 className="header">{title} &nbsp; <Button size="sm" variant="outline-dark" onClick={handleOpenModal}>Importar</Button></h3>
       <MainForm
-        document={document}
-        setDocument={setDocument}
+        document={documentX}
+        setDocument={setDocumentX}
         validated={validated}
         setValidated={setValidated}
         save={save}
         isInfoForm={false}
       />
       <ImportDocumentModal
-        document={document}
-        setDocument={setDocument}
+        document={documentX}
+        setDocument={setDocumentX}
         showModal={showModal}
         setShowModal={setShowModal}
       />

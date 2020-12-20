@@ -14,8 +14,11 @@ function DocumentService(props) {
         parsedDocument.palavrasChaveResumo = parsedDocument.palavrasChaveResumo.map(object => object.text)
         parsedDocument.listaSiglas = parsedDocument.listaSiglas.map(object => `${object.item};${object.text}`)
         parsedDocument.listaSimbolos = parsedDocument.listaSimbolos.map(object => `${object.item};${object.text}`)
+        parsedDocument.subTitulo = parsedDocument.subTitulo ? parsedDocument.subTitulo : null
         return parsedDocument
     }
+
+    const parseTitulo = titulo => titulo.replace(/ /g, "_").toLowerCase()
 
     const showSuccessMessage = msg => {
         props.setStatus({ msg, err: false})
@@ -30,7 +33,7 @@ function DocumentService(props) {
         props.setShowModal(true)
         try {
             await axios({url: `${API_URL}/zip`, method: 'POST', responseType: 'blob', data: parsedDocument}).then(res => {
-                FileDownload(res.data, `${parsedDocument.titulo}.zip`)
+                FileDownload(res.data, `${parseTitulo(parsedDocument.titulo)}.zip`)
             })
             showSuccessMessage('Projeto LaTeX gerado com sucesso.')
         }
@@ -44,7 +47,7 @@ function DocumentService(props) {
         props.setShowModal(true)
         try {
             await axios({url: `${API_URL}/pdf`, method: 'POST', responseType: 'blob', data: parsedDocument}).then(res => {
-                FileDownload(res.data, `${parsedDocument.titulo}.pdf`)
+                FileDownload(res.data, `${parseTitulo(parsedDocument.titulo)}.pdf`)
             })
             showSuccessMessage('PDF gerado com sucesso.')
         }
@@ -55,7 +58,7 @@ function DocumentService(props) {
 
     const generateJsonDocument = document => {
         props.setShowModal(true)
-        FileDownload(JSON.stringify(document), `${document.titulo}.json`)
+        FileDownload(JSON.stringify(document), `${parseTitulo(document.titulo)}.json`)
         showSuccessMessage('Arquivo JSON gerado com sucesso.')
     }
 

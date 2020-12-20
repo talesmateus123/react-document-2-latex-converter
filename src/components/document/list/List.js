@@ -13,6 +13,7 @@ function List() {
 
   const [ getDocumentsStorage ] = DocumentStorageService()
 
+  const [ title ] = useState('Meus documentos')
   const [ documents, setDocuments ] = useState([])
   const [ loadDocuments, setLoadDocuments ] = useState(true)
   const [ filter, setFilter ] = useState('')
@@ -25,7 +26,8 @@ function List() {
       setDocuments(documentsStorage)
       setLoadDocuments(false)
     }
-  }, [ documents, loadDocuments, getDocumentsStorage, filter ])
+    document.title = title
+  }, [ documents, loadDocuments, getDocumentsStorage, filter, title ])
 
   const populateDocumentsTable = () => {
     const documentsTable = documents.map(document => {
@@ -60,7 +62,7 @@ function List() {
 
   return (
     <div>
-      <h3 className="header">Meus documentos</h3>
+      <h3 className="header">{title}</h3>
       <Row>
         <Col sm={9} style={{paddingBottom: '5px'}}>
           <Form.Control value={filter} placeholder="Pesquisar" onChange={handleFilter} data-testid="form-control-filter"/>

@@ -42,7 +42,7 @@ function Resumo(props) {
         if(props.document.palavrasChaveResumo && props.document.palavrasChaveResumo.length > 0) {
 
             return props.document.palavrasChaveResumo.map((palavraChaveResumo, index) => (
-                <InputGroup className="mb-3" key={palavraChaveResumo}>
+                <InputGroup className="mb-3" key={palavraChaveResumo.id}>
                     <F.Control 
                         placeholder={`Palavra-chave ${index+1}`}
                         value={palavraChaveResumo.text || ''}
@@ -82,7 +82,7 @@ function Resumo(props) {
     const getFormControlPalavrasChaveAbstract = () => {
         if(props.document.palavrasChaveAbstractX && props.document.palavrasChaveAbstractX.length > 0) {
             return props.document.palavrasChaveAbstractX.map((palavraChaveAbstract, index) => (
-                <InputGroup className="mb-3" key={palavraChaveAbstract}>
+                <InputGroup className="mb-3" key={palavraChaveAbstract.id}>
                     <F.Control 
                         placeholder={`Palavra-chave ${index+1}`}
                         value={palavraChaveAbstract.text || ''}

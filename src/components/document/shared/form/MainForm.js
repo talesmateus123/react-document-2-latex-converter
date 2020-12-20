@@ -24,28 +24,22 @@ function MainForm(props) {
     setShowModal(true)
   }
 
-  const getBackAndSaveButtons = () => (
-    <div>
-      <br/>
-      <Row>
-        <Col className="text-left">
-          <Button variant="light" onClick={() => navigate('/')}>
-            <FontAwesomeIcon icon={faAngleLeft} /> &nbsp;
-            Voltar
-          </Button>
-        </Col>
-        <Col className="text-right">
-          <Button variant="light" onClick={() => save()}>
-            <FontAwesomeIcon icon={faSave} /> &nbsp;
-            Salvar
-          </Button>
-        </Col>
-      </Row>
-    </div>
+  const getSaveButton = () => (
+    <Button variant="light" onClick={() => save()}>
+      <FontAwesomeIcon icon={faSave} /> &nbsp;
+      Salvar
+    </Button>
   )
+
+  const handleKeyDown = event => {
+    if (event.ctrlKey && event.key === 's') {
+      event.preventDefault()
+      save()
+    } 
+  }
   
   return (
-    <div>
+    <div onKeyDown={handleKeyDown}>
       {
         !props.isInfoForm ?
         <GeneralInfo
@@ -102,10 +96,20 @@ function MainForm(props) {
           </Tabs>
         </div>
       }
-      {
-        !isExportTabActivated &&
-        getBackAndSaveButtons()
-      }
+      <Row>
+        <Col className="text-left">
+          <Button variant="light" onClick={() => navigate('/')}>
+            <FontAwesomeIcon icon={faAngleLeft} /> &nbsp;
+            Voltar
+          </Button>
+        </Col>
+        <Col className="text-right">
+          {
+            !isExportTabActivated &&
+            getSaveButton()
+          }
+        </Col>
+      </Row>
       <SaveConfirmationModal 
         showModal={showModal}
         setShowModal={setShowModal}

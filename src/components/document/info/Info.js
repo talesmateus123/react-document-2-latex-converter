@@ -11,22 +11,27 @@ function Info(props) {
 
   const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
+  const [ title, setTitle ] = useState(document.title)
   const [ documentX, setDocumentX ] = useState({})
   const [ validated, setValidated ] = useState(false)
 
   useEffect(() => {
     const getDocument = () => {
       const documentsList = getDocumentsStorage().filter(documentX => documentX.id === props.id)
-      if (documentsList.length === 0)
+      if (documentsList.length === 0) {
         navigate("/")
-      document.title = documentsList[0].titulo
+        return
+      }
+      setTitle(`Editar - ${documentsList[0].titulo}`)
       return documentsList[0]
     }
+
+    document.title = title
 
     if(Object.keys(documentX).length === 0 ) {
       setDocumentX(getDocument())
     }
-  }, [ documentX, props, getDocumentsStorage ])
+  }, [ documentX, props, getDocumentsStorage, title ])
 
   const save = () => {
     const documents = getDocumentsStorage().map(arrayDocument => {
@@ -39,7 +44,7 @@ function Info(props) {
   
   return (
     <div>
-      <h3 className="header">Informações do documento</h3>
+      <h3 className="header">Editar documento</h3>
       <MainForm
         document={documentX}
         setDocument={setDocumentX}
