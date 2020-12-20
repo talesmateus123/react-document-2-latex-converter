@@ -117,7 +117,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Título</F.Label>
-              <F.Control 
+              <F.Control
+                name="titulo"
                 as="textarea" 
                 rows={FORM_ROWS}
                 placeholder="Título"
@@ -130,7 +131,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Sub título</F.Label>
-              <F.Control 
+              <F.Control
+                name="sub_titulo"
                 as="textarea" 
                 rows={FORM_ROWS}
                 placeholder="Sub título"
@@ -145,7 +147,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Título em inglês</F.Label>
-              <F.Control 
+              <F.Control
+                name="title"
                 as="textarea" 
                 rows={FORM_ROWS}
                 placeholder="Título em inglês"
@@ -158,7 +161,8 @@ function GeneralInfo(props) {
           <Col sm={3}>
             <F.Group>
               <F.Label>Cidade/Estado</F.Label>
-              <F.Control 
+              <F.Control
+                name="cidade_estado"
                 placeholder="Cidade/Estado"
                 type="text"
                 value={props.document.nomeCidade || ''}
@@ -169,11 +173,12 @@ function GeneralInfo(props) {
           <Col sm={3}>
             <F.Group>
               <F.Label>Ano</F.Label>
-              <F.Control 
+              <F.Control
+                name="ano"
                 placeholder="Ano"
                 type="number"
                 value={props.document.ano || ''}
-                onKeyDown={filterLetters }
+                onKeyDown={filterLetters}
                 onChange={setDocumentAno}
               />
             </F.Group>
@@ -183,7 +188,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Tipo de documento</F.Label>
-              <F.Control 
+              <F.Control
+                  name="tipo_documento"
                   as="select"
                   value={props.document.tipoTrabalho || 'TCC'}
                   onChange={setDocumentTipoTrabalho}
@@ -195,7 +201,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Título acadêmico</F.Label>
-              <F.Control 
+              <F.Control
+                name="titulo_academico"
                 as="select"
                 value={props.document.tituloAcademico || 'BACHAREL'}
                 onChange={setDocumentTituloAcademico}
@@ -212,7 +219,8 @@ function GeneralInfo(props) {
             <Col>
               <F.Group>
                 <F.Label>Área de concentração</F.Label>
-                <F.Control 
+                <F.Control
+                  name="area_concentracao"
                   placeholder="Área de concentração"
                   type="text"
                   value={props.document.areaConcentracao || ''}
@@ -223,7 +231,8 @@ function GeneralInfo(props) {
             <Col>
               <F.Group>
                 <F.Label>Linha de pesquisa</F.Label>
-                <F.Control 
+                <F.Control
+                  name="linha_pesquisa"
                   placeholder="Linha de pesquisa"
                   type="text"
                   value={props.document.linhaPesquisa || ''}
@@ -244,7 +253,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Nome</F.Label>
-              <F.Control 
+              <F.Control
+                name="nome_initituicao"
                 placeholder="Nome"
                 type="text"
                 value={props.document.nomeInstituicao || ''}
@@ -257,7 +267,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Sigla</F.Label>
-              <F.Control 
+              <F.Control
+                name="sigla_instituicao"
                 placeholder="Sigla"
                 type="text"
                 value={props.document.siglaInstituicao || ''}
@@ -268,7 +279,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Campus</F.Label>
-              <F.Control 
+              <F.Control
+                name="campus_instituicao"
                 placeholder="Campus"
                 type="text"
                 value={props.document.campusInstituicao || ''}
@@ -280,7 +292,8 @@ function GeneralInfo(props) {
             props.document.tipoTrabalho !== 'TCC' ?
             <Col>
               <F.Group>
-                <F.Control 
+                <F.Control
+                  name="departamento_instituicao"
                   placeholder="Departamento"
                   type="text"
                   value={props.document.departamentoInstituicao || ''}
@@ -301,7 +314,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Nome</F.Label>
-              <F.Control 
+              <F.Control
+                name="nome_curso"
                 placeholder="Nome"
                 type="text"
                 value={props.document.nomeCurso || ''}
@@ -312,12 +326,13 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Nível</F.Label>
-              <F.Control 
+              <F.Control
+                  name="nivel_escolar_curso"
                   as="select"
                   value={props.document.nivelEscolarCurso || 'SUPERIOR'}
                   onChange={setDocumentNivelEscolarCurso}
                 >
-                  {getNiveisEscolares()}
+                {getNiveisEscolares()}
               </F.Control>
             </F.Group>
           </Col>
@@ -332,7 +347,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Autor</F.Label>
-              <F.Control 
+              <F.Control
+                name="nome_autor"
                 placeholder="Nome"
                 value={props.document.nomeAutor || ''}
                 onChange={setDocumentNomeAutor}
@@ -342,7 +358,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Orientador</F.Label>
-              <F.Control 
+              <F.Control
+                name="nome_orientador"
                 placeholder="Nome"
                 value={props.document.nomeOrientador || ''}
                 onChange={setDocumentNomeOrientador}
@@ -352,7 +369,8 @@ function GeneralInfo(props) {
           <Col>
             <F.Group>
               <F.Label>Coorientador</F.Label>
-              <F.Control 
+              <F.Control
+                name="nome_coorientador"
                 placeholder="Nome"
                 value={props.document.nomeCoorientador || ''}
                 onChange={setDocumentNomeCoorientador}

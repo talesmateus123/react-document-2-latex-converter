@@ -57,6 +57,7 @@ function MainForm(props) {
         :
         <div>
           <Tabs 
+            className="tabs"
             defaultActiveKey="general-info" 
             id="main-form-tabs" 
             onSelect={key => key === 'exports' ? setExportTabActivated(true) : setExportTabActivated(false)}

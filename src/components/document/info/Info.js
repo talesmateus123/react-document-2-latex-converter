@@ -11,26 +11,27 @@ function Info(props) {
 
   const [ getDocumentsStorage, setDocumentsStorage ] = DocumentStorageService()
 
-  const [ document, setDocument ] = useState({})
+  const [ documentX, setDocumentX ] = useState({})
   const [ validated, setValidated ] = useState(false)
 
   useEffect(() => {
     const getDocument = () => {
-      const documentsList = getDocumentsStorage().filter(document => document.id === props.id)
+      const documentsList = getDocumentsStorage().filter(documentX => documentX.id === props.id)
       if (documentsList.length === 0)
         navigate("/")
+      document.title = documentsList[0].titulo
       return documentsList[0]
     }
 
-    if(Object.keys(document).length === 0 ) {
-      setDocument(getDocument())
+    if(Object.keys(documentX).length === 0 ) {
+      setDocumentX(getDocument())
     }
-  }, [ document, props, getDocumentsStorage ])
+  }, [ documentX, props, getDocumentsStorage ])
 
   const save = () => {
     const documents = getDocumentsStorage().map(arrayDocument => {
-      if(arrayDocument.id === document.id) 
-        return document
+      if(arrayDocument.id === documentX.id) 
+        return documentX
       return arrayDocument
     })
     setDocumentsStorage(documents)
@@ -40,8 +41,8 @@ function Info(props) {
     <div>
       <h3 className="header">Informações do documento</h3>
       <MainForm
-        document={document}
-        setDocument={setDocument}
+        document={documentX}
+        setDocument={setDocumentX}
         validated={validated}
         setValidated={setValidated}
         save={save}

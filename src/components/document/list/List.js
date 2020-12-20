@@ -31,8 +31,8 @@ function List() {
     const documentsTable = documents.map(document => {
       return (
         <tr key={document.id}>
-          <td>{document.titulo}</td>
-          <td>{document.subTitulo}</td>
+          <td className="title">{document.titulo}</td>
+          <td className="sub_title">{document.subTitulo}</td>
           <td className="text-center">
             <Button className="btn-sm btn-info" onClick={() => navigate(`/info/${document.id}`)} data-testid="btn-open-modal">
               <FontAwesomeIcon icon={faEdit} />
@@ -62,12 +62,12 @@ function List() {
     <div>
       <h3 className="header">Meus documentos</h3>
       <Row>
-        <Col sm={9}>
+        <Col sm={9} style={{paddingBottom: '5px'}}>
           <Form.Control value={filter} placeholder="Pesquisar" onChange={handleFilter} data-testid="form-control-filter"/>
         </Col>
         <Col sm={3} className="text-right">
           <Button
-            variant="success"
+            variant="dark"
             className="btn-sm" 
             style={{height: '38px', width: '100%'}}
             data-testid="btn-new"
@@ -93,15 +93,10 @@ function List() {
           </thead>
           <tbody>
             {
-              documents.length !== 0
-              ? populateDocumentsTable() 
-              : (
-              <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            )}
+              documents.length !== 0 &&
+              populateDocumentsTable() 
+              
+            }
           </tbody>
         </Table>
       </Row>

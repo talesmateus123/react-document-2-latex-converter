@@ -56,9 +56,13 @@ function Others(props) {
                         placeholder={`Palavra-chave ${index+1}`}
                         value={fichaCatalograficaPalavraChave.text || ''}
                         onChange={event => handleSetFichaCatalograficaPalavrasChave({id: fichaCatalograficaPalavraChave.id, text: event.target.value})}
+                        disabled={!props.document.enabledFichaCatalografica}
                     />
                     <InputGroup.Prepend>
-                        <Button onClick={() => handleRemoveFichaCatalograficaPalavraChave(fichaCatalograficaPalavraChave.id)} variant="danger">
+                        <Button 
+                            onClick={() => handleRemoveFichaCatalograficaPalavraChave(fichaCatalograficaPalavraChave.id)} 
+                            variant="danger"
+                            disabled={!props.document.enabledFichaCatalografica} >
                             <FontAwesomeIcon icon={faMinus} /> &nbsp; Remover
                         </Button>
                     </InputGroup.Prepend>
@@ -84,6 +88,7 @@ function Others(props) {
                             placeholder="Escreva o texto dos agradecimentos aqui"
                             value={props.document.agradecimentos || ''}
                             onChange={setDocumentAgradecimentos}
+                            disabled={!props.document.enabledAgradecimentos}
                         />
                     </F.Group>
                 </Col>
@@ -98,6 +103,7 @@ function Others(props) {
                             placeholder="Escreva o texto da dedicatória aqui"
                             value={props.document.dedicatoria || ''}
                             onChange={setDocumentDedicatoria}
+                            disabled={!props.document.enabledDedicatoria}
                         />
                     </F.Group>
                 </Col>
@@ -112,6 +118,7 @@ function Others(props) {
                             placeholder="Escreva o texto do epígrafe aqui"
                             value={props.document.epigrafe || ''}
                             onChange={setDocumentEpigrafe}
+                            disabled={!props.document.enabledEpigrafe}
                         />
                     </F.Group>
                 </Col>
@@ -136,7 +143,11 @@ function Others(props) {
                         <F.Label>
                             Palavras-chave da ficha catalográfica
                             &nbsp;
-                            <Button onClick={() => handleNewFichaCatalograficaPalavraChave()} variant="outline-success" size="sm">
+                            <Button 
+                                onClick={() => handleNewFichaCatalograficaPalavraChave()} 
+                                variant="outline-success" 
+                                size="sm"
+                                disabled={!props.document.enabledFichaCatalografica} >
                                 <FontAwesomeIcon icon={faPlus} />
                             </Button>
                         </F.Label>

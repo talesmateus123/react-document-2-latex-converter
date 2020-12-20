@@ -8,12 +8,13 @@ function DocumentService(props) {
     const API_URL = process.env.REACT_APP_API_URL
 
     const parseDocument = document => {
-        document.palavrasChaveAbstractX = document.palavrasChaveAbstractX.map(object => object.text)
-        document.fichaCatalograficaPalavrasChave = document.fichaCatalograficaPalavrasChave.map(object => object.text)
-        document.palavrasChaveResumo = document.palavrasChaveResumo.map(object => object.text)
-        document.listaSiglas = document.listaSiglas.map(object => `${object.item};${object.text}`)
-        document.listaSimbolos = document.listaSimbolos.map(object => `${object.item};${object.text}`)
-        document.palavrasChaveAbstractX = document.palavrasChaveAbstractX.map(object => object.text)
+        const parsedDocument = { ...document }
+        parsedDocument.palavrasChaveAbstractX = parsedDocument.palavrasChaveAbstractX.map(object => object.text)
+        parsedDocument.fichaCatalograficaPalavrasChave = parsedDocument.fichaCatalograficaPalavrasChave.map(object => object.text)
+        parsedDocument.palavrasChaveResumo = parsedDocument.palavrasChaveResumo.map(object => object.text)
+        parsedDocument.listaSiglas = parsedDocument.listaSiglas.map(object => `${object.item};${object.text}`)
+        parsedDocument.listaSimbolos = parsedDocument.listaSimbolos.map(object => `${object.item};${object.text}`)
+        return parsedDocument
     }
 
     const showSuccessMessage = msg => {
@@ -25,11 +26,11 @@ function DocumentService(props) {
     }
 
     const generateZippedDocument = async document => {
-        parseDocument(document)
+        const parsedDocument = parseDocument(document)
         props.setShowModal(true)
         try {
-            await axios({url: `${API_URL}/zip`, method: 'POST', responseType: 'blob', data: document}).then(res => {
-                FileDownload(res.data, `${document.titulo}.zip`)
+            await axios({url: `${API_URL}/zip`, method: 'POST', responseType: 'blob', data: parsedDocument}).then(res => {
+                FileDownload(res.data, `${parsedDocument.titulo}.zip`)
             })
             showSuccessMessage('Projeto LaTeX gerado com sucesso.')
         }
@@ -39,11 +40,11 @@ function DocumentService(props) {
     }
     
     const generatePdfDocument = async document => {
-        parseDocument(document)
+        const parsedDocument = parseDocument(document)
         props.setShowModal(true)
         try {
-            await axios({url: `${API_URL}/pdf`, method: 'POST', responseType: 'blob', data: document}).then(res => {
-                FileDownload(res.data, `${document.titulo}.pdf`)
+            await axios({url: `${API_URL}/pdf`, method: 'POST', responseType: 'blob', data: parsedDocument}).then(res => {
+                FileDownload(res.data, `${parsedDocument.titulo}.pdf`)
             })
             showSuccessMessage('PDF gerado com sucesso.')
         }
