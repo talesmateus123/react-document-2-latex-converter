@@ -107,278 +107,257 @@ function GeneralInfo(props) {
 
   return (
     <div>
-      <F
-        validated={props.validated}
-        noValidate
-        onSubmit={props.save}
-      >
-        <br/>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Título</F.Label>
-              <F.Control
-                name="titulo"
-                as="textarea" 
-                rows={FORM_ROWS}
-                placeholder="Título"
-                type="text"
-                value={props.document.titulo || ''}
-                onChange={setDocumentTitulo}
-              />
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Sub título</F.Label>
-              <F.Control
-                name="sub_titulo"
-                as="textarea" 
-                rows={FORM_ROWS}
-                placeholder="Sub título"
-                value={props.document.subTitulo || ''}
-                onChange={setDocumentSubTitulo}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
+      <br/>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Título</F.Label>
+            <F.Control
+              className={props.errors && props.errors.filter(error => error.type === 'titulo').length === 1 && 'is-invalid'}
+              as="textarea" 
+              rows={FORM_ROWS}
+              placeholder="Título"
+              type="text"
+              value={props.document.titulo || ''}
+              onChange={setDocumentTitulo}
+            />
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Sub título</F.Label>
+            <F.Control
+              as="textarea" 
+              rows={FORM_ROWS}
+              placeholder="Sub título"
+              value={props.document.subTitulo || ''}
+              onChange={setDocumentSubTitulo}
+            />
+          </F.Group>
+        </Col>
+      </F.Row>
 
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Título em inglês</F.Label>
-              <F.Control
-                name="title"
-                as="textarea" 
-                rows={FORM_ROWS}
-                placeholder="Título em inglês"
-                type="text"
-                value={props.document.title || ''}
-                onChange={setDocumentTitle}
-              />
-            </F.Group>
-          </Col>
-          <Col sm={3}>
-            <F.Group>
-              <F.Label>Cidade/Estado</F.Label>
-              <F.Control
-                name="cidade_estado"
-                placeholder="Cidade/Estado"
-                type="text"
-                value={props.document.nomeCidade || ''}
-                onChange={setDocumentNomeCidade}
-              />
-            </F.Group>
-          </Col>
-          <Col sm={3}>
-            <F.Group>
-              <F.Label>Ano</F.Label>
-              <F.Control
-                name="ano"
-                placeholder="Ano"
-                type="number"
-                value={props.document.ano || ''}
-                onKeyDown={filterLetters}
-                onChange={setDocumentAno}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Tipo de documento</F.Label>
-              <F.Control
-                  name="tipo_documento"
-                  as="select"
-                  value={props.document.tipoTrabalho || 'TCC'}
-                  onChange={setDocumentTipoTrabalho}
-                >
-                  {getTiposDeTrabalho()}
-              </F.Control>
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Título acadêmico</F.Label>
-              <F.Control
-                name="titulo_academico"
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Título em inglês</F.Label>
+            <F.Control
+              as="textarea" 
+              rows={FORM_ROWS}
+              placeholder="Título em inglês"
+              type="text"
+              value={props.document.title || ''}
+              onChange={setDocumentTitle}
+            />
+          </F.Group>
+        </Col>
+        <Col sm={3}>
+          <F.Group>
+            <F.Label>Cidade/Estado</F.Label>
+            <F.Control
+              placeholder="Cidade/Estado"
+              type="text"
+              value={props.document.nomeCidade || ''}
+              onChange={setDocumentNomeCidade}
+            />
+          </F.Group>
+        </Col>
+        <Col sm={3}>
+          <F.Group>
+            <F.Label>Ano</F.Label>
+            <F.Control
+              placeholder="Ano"
+              type="number"
+              value={props.document.ano || ''}
+              onKeyDown={filterLetters}
+              onChange={setDocumentAno}
+            />
+          </F.Group>
+        </Col>
+      </F.Row>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Tipo de documento</F.Label>
+            <F.Control
                 as="select"
-                value={props.document.tituloAcademico || 'BACHAREL'}
-                onChange={setDocumentTituloAcademico}
+                value={props.document.tipoTrabalho || 'TCC'}
+                onChange={setDocumentTipoTrabalho}
               >
-                {getTitulosAcademicos()}
-              </F.Control>
+                {getTiposDeTrabalho()}
+            </F.Control>
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Título acadêmico</F.Label>
+            <F.Control
+              as="select"
+              value={props.document.tituloAcademico || 'BACHAREL'}
+              onChange={setDocumentTituloAcademico}
+            >
+              {getTitulosAcademicos()}
+            </F.Control>
+          </F.Group>
+        </Col>
+      </F.Row>
+
+      {
+        props.document.tipoTrabalho !== 'TCC' ?
+        <F.Row>
+          <Col>
+            <F.Group>
+              <F.Label>Área de concentração</F.Label>
+              <F.Control
+                placeholder="Área de concentração"
+                type="text"
+                value={props.document.areaConcentracao || ''}
+                onChange={setDocumentAreaConcentracao}
+              />
+            </F.Group>
+          </Col>
+          <Col>
+            <F.Group>
+              <F.Label>Linha de pesquisa</F.Label>
+              <F.Control
+                placeholder="Linha de pesquisa"
+                type="text"
+                value={props.document.linhaPesquisa || ''}
+                onChange={setDocumentLinhaPesquisa}
+              />
             </F.Group>
           </Col>
         </F.Row>
+        : null
+      }
 
+      <hr/>
+
+      <F.Row>
+        <Col className="form-title">Informações da instituição</Col>
+      </F.Row>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Nome</F.Label>
+            <F.Control
+              placeholder="Nome"
+              type="text"
+              value={props.document.nomeInstituicao || ''}
+              onChange={setDocumentNomeInstituicao}
+            />
+          </F.Group>
+        </Col>
+      </F.Row>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Sigla</F.Label>
+            <F.Control
+              placeholder="Sigla"
+              type="text"
+              value={props.document.siglaInstituicao || ''}
+              onChange={setDocumentSiglaInstituicao}
+            />
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Campus</F.Label>
+            <F.Control
+              placeholder="Campus"
+              type="text"
+              value={props.document.campusInstituicao || ''}
+              onChange={setDocumentCampusInstituicao}
+            />
+          </F.Group>
+        </Col> 
         {
           props.document.tipoTrabalho !== 'TCC' ?
-          <F.Row>
-            <Col>
-              <F.Group>
-                <F.Label>Área de concentração</F.Label>
-                <F.Control
-                  name="area_concentracao"
-                  placeholder="Área de concentração"
-                  type="text"
-                  value={props.document.areaConcentracao || ''}
-                  onChange={setDocumentAreaConcentracao}
-                />
-              </F.Group>
-            </Col>
-            <Col>
-              <F.Group>
-                <F.Label>Linha de pesquisa</F.Label>
-                <F.Control
-                  name="linha_pesquisa"
-                  placeholder="Linha de pesquisa"
-                  type="text"
-                  value={props.document.linhaPesquisa || ''}
-                  onChange={setDocumentLinhaPesquisa}
-                />
-              </F.Group>
-            </Col>
-          </F.Row>
+          <Col>
+            <F.Group>
+              <F.Control
+                placeholder="Departamento"
+                type="text"
+                value={props.document.departamentoInstituicao || ''}
+                onChange={setDocumentDepartamentoInstituicao}
+              />
+            </F.Group>
+          </Col>
           : null
         }
+      </F.Row>
 
-        <hr/>
+      <hr/>
 
-        <F.Row>
-          <Col className="form-title">Informações da instituição</Col>
-        </F.Row>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Nome</F.Label>
-              <F.Control
-                name="nome_initituicao"
-                placeholder="Nome"
-                type="text"
-                value={props.document.nomeInstituicao || ''}
-                onChange={setDocumentNomeInstituicao}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Sigla</F.Label>
-              <F.Control
-                name="sigla_instituicao"
-                placeholder="Sigla"
-                type="text"
-                value={props.document.siglaInstituicao || ''}
-                onChange={setDocumentSiglaInstituicao}
-              />
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Campus</F.Label>
-              <F.Control
-                name="campus_instituicao"
-                placeholder="Campus"
-                type="text"
-                value={props.document.campusInstituicao || ''}
-                onChange={setDocumentCampusInstituicao}
-              />
-            </F.Group>
-          </Col> 
-          {
-            props.document.tipoTrabalho !== 'TCC' ?
-            <Col>
-              <F.Group>
-                <F.Control
-                  name="departamento_instituicao"
-                  placeholder="Departamento"
-                  type="text"
-                  value={props.document.departamentoInstituicao || ''}
-                  onChange={setDocumentDepartamentoInstituicao}
-                />
-              </F.Group>
-            </Col>
-            : null
-          }
-        </F.Row>
+      <F.Row>
+        <Col className="form-title">Informações do curso</Col>
+      </F.Row>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Nome</F.Label>
+            <F.Control
+              placeholder="Nome"
+              type="text"
+              value={props.document.nomeCurso || ''}
+              onChange={setDocumentNomeCurso}
+            />
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Nível</F.Label>
+            <F.Control
+                as="select"
+                value={props.document.nivelEscolarCurso || 'SUPERIOR'}
+                onChange={setDocumentNivelEscolarCurso}
+              >
+              {getNiveisEscolares()}
+            </F.Control>
+          </F.Group>
+        </Col>
+      </F.Row>
 
-        <hr/>
+      <hr/>
 
-        <F.Row>
-          <Col className="form-title">Informações do curso</Col>
-        </F.Row>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Nome</F.Label>
-              <F.Control
-                name="nome_curso"
-                placeholder="Nome"
-                type="text"
-                value={props.document.nomeCurso || ''}
-                onChange={setDocumentNomeCurso}
-              />
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Nível</F.Label>
-              <F.Control
-                  name="nivel_escolar_curso"
-                  as="select"
-                  value={props.document.nivelEscolarCurso || 'SUPERIOR'}
-                  onChange={setDocumentNivelEscolarCurso}
-                >
-                {getNiveisEscolares()}
-              </F.Control>
-            </F.Group>
-          </Col>
-        </F.Row>
-
-        <hr/>
-
-        <F.Row>
-          <Col className="form-title">Pessoas envolvidas</Col>
-        </F.Row>
-        <F.Row>
-          <Col>
-            <F.Group>
-              <F.Label>Autor</F.Label>
-              <F.Control
-                name="nome_autor"
-                placeholder="Nome"
-                value={props.document.nomeAutor || ''}
-                onChange={setDocumentNomeAutor}
-              />
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Orientador</F.Label>
-              <F.Control
-                name="nome_orientador"
-                placeholder="Nome"
-                value={props.document.nomeOrientador || ''}
-                onChange={setDocumentNomeOrientador}
-              />
-            </F.Group>
-          </Col>
-          <Col>
-            <F.Group>
-              <F.Label>Coorientador</F.Label>
-              <F.Control
-                name="nome_coorientador"
-                placeholder="Nome"
-                value={props.document.nomeCoorientador || ''}
-                onChange={setDocumentNomeCoorientador}
-              />
-            </F.Group>
-          </Col>
-        </F.Row>
-      </F>
+      <F.Row>
+        <Col className="form-title">Pessoas envolvidas</Col>
+      </F.Row>
+      <F.Row>
+        <Col>
+          <F.Group>
+            <F.Label>Autor</F.Label>
+            <F.Control
+              className={props.errors && props.errors.filter(error => error.type === 'autor').length === 1 && 'is-invalid'}
+              placeholder="Nome"
+              value={props.document.nomeAutor || ''}
+              onChange={setDocumentNomeAutor}
+            />
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Orientador</F.Label>
+            <F.Control
+              placeholder="Nome"
+              value={props.document.nomeOrientador || ''}
+              onChange={setDocumentNomeOrientador}
+            />
+          </F.Group>
+        </Col>
+        <Col>
+          <F.Group>
+            <F.Label>Coorientador</F.Label>
+            <F.Control
+              name="nome_coorientador"
+              placeholder="Nome"
+              value={props.document.nomeCoorientador || ''}
+              onChange={setDocumentNomeCoorientador}
+            />
+          </F.Group>
+        </Col>
+      </F.Row>
     </div>
   )
 }
@@ -387,7 +366,8 @@ GeneralInfo.propTypes = {
   document: PropTypes.object.isRequired,
   setDocument: PropTypes.func.isRequired,
   validated: PropTypes.bool.isRequired,
-  setValidated: PropTypes.func.isRequired
+  setValidated: PropTypes.func.isRequired,
+  errors: PropTypes.array
 }
 
 export default GeneralInfo

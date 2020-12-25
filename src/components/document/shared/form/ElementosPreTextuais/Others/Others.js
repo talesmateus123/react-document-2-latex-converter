@@ -73,11 +73,7 @@ function Others(props) {
     }
 
     return (
-        <F
-            validated={props.validated}
-            noValidate
-            onSubmit={props.save}
-        >
+        <div>
             <F.Row>
                 <Col>
                     <F.Group>
@@ -156,7 +152,7 @@ function Others(props) {
                 </Col>
             </F.Row>
             <hr/>
-        </F>
+        </div>
     )
 }
 

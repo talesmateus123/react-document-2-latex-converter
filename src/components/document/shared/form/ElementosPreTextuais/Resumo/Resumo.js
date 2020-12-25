@@ -100,11 +100,7 @@ function Resumo(props) {
     }
 
     return (
-        <F
-            validated={props.validated}
-            noValidate
-            onSubmit={props.save}
-        >
+        <div>
             <F.Row>
                 <Col>
                     <F.Group>
@@ -162,7 +158,7 @@ function Resumo(props) {
                     </F.Group>
                 </Col>
             </F.Row>
-        </F>
+        </div>
     )
 }
 

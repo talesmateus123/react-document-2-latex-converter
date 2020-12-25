@@ -36,11 +36,11 @@ function List() {
           <td className="title">{document.titulo}</td>
           <td className="sub_title">{document.subTitulo}</td>
           <td className="text-center">
-            <Button className="btn-sm btn-info" onClick={() => navigate(`/info/${document.id}`)} data-testid="btn-open-modal">
+            <Button className="btn-sm btn-info" onClick={() => navigate(`/info/${document.id}`)} data-testid="btn-info-page">
               <FontAwesomeIcon icon={faEdit} />
             </Button>
             &nbsp;
-            <Button variant="danger" className="btn-sm" onClick={() => handleOpenRemoveModal(document.id)} data-testid="btn-open-modal">
+            <Button variant="danger" className="btn-sm" onClick={() => handleOpenRemoveModal(document.id)} data-testid="btn-open-remove-modal">
               <FontAwesomeIcon icon={faTrashAlt} />
             </Button>
           </td>

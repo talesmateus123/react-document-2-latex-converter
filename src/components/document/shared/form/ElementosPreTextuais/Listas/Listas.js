@@ -102,11 +102,7 @@ function Listas(props) {
     }
 
     return (
-        <F
-            validated={props.validated}
-            noValidate
-            onSubmit={props.save}
-        >
+        <div>
             <F.Row>
                 <Col>
                     <F.Group>
@@ -136,7 +132,7 @@ function Listas(props) {
                     </F.Group>
                 </Col>
             </F.Row>
-        </F>
+        </div>
     )
 }
 
