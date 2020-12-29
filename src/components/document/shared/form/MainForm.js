@@ -18,7 +18,7 @@ function MainForm(props) {
   const [ errors, setErros ] = useState(null)
   const [ isExportTabActivated, setExportTabActivated ] = useState(false)
   const [ showModal, setShowModal ] = useState(false)
-  const myRef = useRef(null)
+  const errorRef = useRef(null)
   
   const save = () => {
     props.save()
@@ -40,8 +40,13 @@ function MainForm(props) {
 
     if(!props.document.nomeAutor)
       formErrors.push({type: 'autor', msg: <p>O campo <strong>Autor</strong> é obrigatório</p>})
-      
 
+    if(!props.document.nomeCurso)
+      formErrors.push({type: 'nomeCurso', msg: <p>O campo <strong>Nome</strong> (do curso) é obrigatório</p>})
+      
+    if(!props.document.title)
+      formErrors.push({type: 'title', msg: <p>O campo <strong>Title</strong> é obrigatório</p>})
+    
     if(formErrors.length > 0) {
       setErros(formErrors)
       return
@@ -52,7 +57,7 @@ function MainForm(props) {
 
   const getErrors = () => {
     if(errors && errors.length > 0) {
-      myRef.current.scrollIntoView()
+      errorRef.current.scrollIntoView()
       return (
         <Alert variant="danger">
           <Alert.Heading>Erro de validação!</Alert.Heading>
@@ -63,11 +68,7 @@ function MainForm(props) {
   }
   
   return (
-    <F onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
-      <div ref={myRef}>
-        {getErrors()}
-      </div>
-      
+    <F onKeyDown={handleKeyDown} onSubmit={handleSubmit}>      
       {
         !props.isInfoForm ?
         <GeneralInfo
@@ -126,6 +127,11 @@ function MainForm(props) {
           </Tabs>
         </div>
       }
+
+      <div ref={errorRef}>
+        {getErrors()}
+      </div>
+
       <Row>
         <Col className="text-left">
           <Button variant="light" onClick={() => navigate('/')}>

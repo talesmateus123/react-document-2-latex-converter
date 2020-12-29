@@ -142,6 +142,7 @@ function GeneralInfo(props) {
           <F.Group>
             <F.Label>Título em inglês</F.Label>
             <F.Control
+              className={props.errors && props.errors.filter(error => error.type === 'title').length === 1 && 'is-invalid'}
               as="textarea" 
               rows={FORM_ROWS}
               placeholder="Título em inglês"
@@ -298,6 +299,7 @@ function GeneralInfo(props) {
           <F.Group>
             <F.Label>Nome</F.Label>
             <F.Control
+              className={props.errors && props.errors.filter(error => error.type === 'nomeCurso').length === 1 && 'is-invalid'}
               placeholder="Nome"
               type="text"
               value={props.document.nomeCurso || ''}
